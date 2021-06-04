@@ -17,7 +17,14 @@ protocol Built {
     func callAsFunction(@Builder _ builder: () -> [UIView]) -> Self
 }
 
-extension Built {
+extension Built where Self: UIView {
+    func addSubviews(_ subviews: [UIView]) {
+        subviews.forEach {
+            addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
+    
     @discardableResult
     func addSubviews(@Builder _ builder: () -> [UIView]) -> Self {
         addSubviews(builder())
@@ -30,21 +37,40 @@ extension Built {
     }
 }
 
-extension Built where Self: UIView {
-    func addSubviews(_ subviews: [UIView]) {
-        subviews.forEach {
-            addSubview($0)
-            $0.translatesAutoresizingMaskIntoConstraints = false
-        }
-    }
-}
-
 extension Built where Self: UIStackView {
     func addSubviews(_ subviews: [UIView]) {
         subviews.forEach {
             addArrangedSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
         }
+    }
+    
+    @discardableResult
+    func addSubviews(@Builder _ builder: () -> [UIView]) -> Self {
+        addSubviews(builder())
+        return self
+    }
+    
+    @discardableResult
+    func callAsFunction(@Builder _ builder: () -> [UIView]) -> Self {
+        addSubviews(builder)
     }
 }
 
 extension UIView: Built { }
+
+public typealias Stack = UIStackView
+
+public func VStack(@Builder _ builder: () -> [UIView]) -> Stack {
+    let stack = Stack()
+    stack.axis = .vertical
+    stack.addSubviews(builder)
+    return stack
+}
+
+public func HStack(@Builder _ builder: () -> [UIView]) -> Stack {
+    let stack = Stack()
+    stack.axis = .horizontal
+    stack.addSubviews(builder)
+    return stack
+}

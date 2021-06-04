@@ -20,5 +20,3 @@ extension Storable {
 }
 
 extension UIView: Storable { }
-
-extension NSLayoutConstraint: Storable { }

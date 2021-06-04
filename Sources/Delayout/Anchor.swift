@@ -7,24 +7,26 @@
 
 import UIKit
 
-enum HorizontalAnchor {
+public enum HorizontalAnchor {
     case leading
     case trailing
+    case left
+    case right
     case center
 }
 
-enum VerticalAnchor {
+public enum VerticalAnchor {
     case top
     case bottom
     case center
 }
 
-enum SizeAnchor {
+public enum SizeAnchor {
     case width
     case height
 }
 
-enum AnchorType {
+public enum AnchorType {
     case margin
     case safeArea
 }
@@ -52,6 +54,10 @@ extension UIView {
                 return trailingAnchor
             case .center:
                 return centerXAnchor
+            case .left:
+                return leftAnchor
+            case .right:
+                return rightAnchor
             }
         case .safeArea:
             switch anchor {
@@ -61,6 +67,10 @@ extension UIView {
                 return safeAreaLayoutGuide.trailingAnchor
             case .center:
                 return safeAreaLayoutGuide.centerXAnchor
+            case .left:
+                return safeAreaLayoutGuide.leftAnchor
+            case .right:
+                return safeAreaLayoutGuide.rightAnchor
             }
         }
     }
