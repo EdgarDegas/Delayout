@@ -23,4 +23,12 @@ import UIKit
     static func buildEither(second component: [Building]) -> [UIView] {
         component.flatMap(\.asViews)
     }
+
+    static func buildArray(_ components: [[Building]]) -> [UIView] {
+        components.flatMap {
+            $0.flatMap {
+                $0.asViews
+            }
+        }
+    }
 }
