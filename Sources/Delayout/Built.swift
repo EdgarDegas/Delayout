@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol Built {
+public protocol Built {
     func addSubviews(_ subviews: [UIView])
     
     @discardableResult
@@ -17,7 +17,7 @@ protocol Built {
     func callAsFunction(@Builder _ builder: () -> [UIView]) -> Self
 }
 
-extension Built where Self: UIView {
+public extension Built where Self: UIView {
     func addSubviews(_ subviews: [UIView]) {
         subviews.forEach {
             addSubview($0)
@@ -37,7 +37,7 @@ extension Built where Self: UIView {
     }
 }
 
-extension Built where Self: UIStackView {
+public extension Built where Self: UIStackView {
     func addSubviews(_ subviews: [UIView]) {
         subviews.forEach {
             addArrangedSubview($0)
