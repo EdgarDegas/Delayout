@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UIViewController {
+extension ViewController {
   final class View: UIView {
     private weak var obscuringView: UIView!
     private weak var detailView: DetailView!
