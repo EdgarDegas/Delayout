@@ -7,25 +7,25 @@
 
 import UIKit
 
-protocol Building {
-    var asViews: [UIView] { get }
+public protocol Building {
+    var asDelayoutViews: [UIView] { get }
 }
 
 
 extension UIView: Building {
-    var asViews: [UIView] {
+    public var asDelayoutViews: [UIView] {
         [self]
     }
 }
 
 extension Array: Building where Element: UIView {
-    var asViews: [UIView] {
+    public var asDelayoutViews: [UIView] {
         self
     }
 }
 
 extension Optional: Building where Wrapped: UIView {
-    var asViews: [UIView] {
+    public var asDelayoutViews: [UIView] {
         if case .some(let view) = self {
             return [view]
         } else {

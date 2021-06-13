@@ -8,26 +8,26 @@
 import UIKit
 
 @resultBuilder public struct Builder {
-    static func buildBlock(_ components: Building...) -> [UIView] {
-        components.flatMap(\.asViews)
+    public static func buildBlock(_ components: Building...) -> [UIView] {
+        components.flatMap(\.asDelayoutViews)
     }
     
-    static func buildOptional(_ component: [Building]?) -> [UIView] {
-        component?.flatMap(\.asViews) ?? []
+    public static func buildOptional(_ component: [Building]?) -> [UIView] {
+        component?.flatMap(\.asDelayoutViews) ?? []
     }
     
-    static func buildEither(first component: [Building]) -> [UIView] {
-        component.flatMap(\.asViews)
+    public static func buildEither(first component: [Building]) -> [UIView] {
+        component.flatMap(\.asDelayoutViews)
     }
     
-    static func buildEither(second component: [Building]) -> [UIView] {
-        component.flatMap(\.asViews)
+    public static func buildEither(second component: [Building]) -> [UIView] {
+        component.flatMap(\.asDelayoutViews)
     }
 
-    static func buildArray(_ components: [[Building]]) -> [UIView] {
+    public static func buildArray(_ components: [[Building]]) -> [UIView] {
         components.flatMap {
             $0.flatMap {
-                $0.asViews
+                $0.asDelayoutViews
             }
         }
     }
