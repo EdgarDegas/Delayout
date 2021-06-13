@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol Storable {
+public protocol Storable {
     
 }
 
 extension Storable {
     @discardableResult
-    func store<T>(as v: inout T) -> Self {
+    public func store<T>(as v: inout T) -> Self {
         v = self as! T
         return self
     }
