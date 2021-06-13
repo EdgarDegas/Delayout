@@ -188,7 +188,7 @@ private extension ViewController.View {
   }
   
   func toggleDetailViewVisible(_ visible: Bool, completion: (() -> Void)? = nil) {
-    let constraint = detailView.nsConstraints[detailViewTopConstraintID]
+    let constraint = detailView.constraintsAddedByDelayout[detailViewTopConstraintID]
     constraint?.constant = {
       if visible {
         return -detailView.frame.height

@@ -49,7 +49,7 @@ internal extension UIView {
     ) {
         guard let target = targetedConstraint.target else { return }
         let constraint = targetedConstraint.constraint
-        nsConstraints[constraint.identifier] = {
+        constraintsAddedByDelayout[constraint.identifier] = {
             if let constraint = constraint as? HorizontalConstraint {
                 return applyHorizontalConstraint(constraint, to: target)
             } else if let constraint = constraint as? VerticalConstraint {
@@ -84,7 +84,7 @@ internal extension UIView {
         }()
         nsConstraint.priority = constraint.priority
         nsConstraint.isActive = true
-        nsConstraints[constraint.identifier] = nsConstraint
+        constraintsAddedByDelayout[constraint.identifier] = nsConstraint
     }
 }
 

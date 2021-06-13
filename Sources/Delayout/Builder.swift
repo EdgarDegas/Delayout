@@ -7,7 +7,7 @@
 
 import UIKit
 
-@resultBuilder struct Builder {
+@resultBuilder public struct Builder {
     static func buildBlock(_ components: Building...) -> [UIView] {
         components.flatMap(\.asViews)
     }

@@ -14,29 +14,43 @@ private var keySubviewConstraintsByTarget: Void?
 
 typealias ConstraintsToSuperview = [String: DelayoutConstraint]
 typealias TargetedConstraints = [String: TargetedDelayoutConstraint]
-typealias NSConstraints = [String: NSLayoutConstraint]
+public typealias NSConstraints = [String: NSLayoutConstraint]
 typealias SubviewConstraint = (source: UIView, constraint: DelayoutConstraint)
 
 public extension UIView {
     func removeDelayoutConstraint(by identifier: String) {
-        if let nsConstraint = nsConstraints[identifier] {
+        if let nsConstraint = constraintsAddedByDelayout[identifier] {
             nsConstraint.isActive = false
-            nsConstraints.removeValue(forKey: identifier)
+            constraintsAddedByDelayout.removeValue(forKey: identifier)
         }
         constraintsToSuperview.removeValue(forKey: identifier)
         targetedConstraints.removeValue(forKey: identifier)
     }
     
     func removeAllDelayoutConstraints() {
-        nsConstraints.forEach {
+        constraintsAddedByDelayout.forEach {
             $0.value.isActive = false
         }
-        nsConstraints.removeAll()
+        constraintsAddedByDelayout.removeAll()
         constraintsToSuperview.removeAll()
         targetedConstraints.removeAll()
     }
+    
+    var constraintsAddedByDelayout: NSConstraints {
+        get {
+            if let nsConstraints: NSConstraints = getRuntimeObject(
+                by: &keyNSConstraints
+            ) {
+                return nsConstraints
+            } else {
+                return [:]
+            }
+        }
+        set {
+            setRuntimeObject(newValue, by: &keyNSConstraints)
+        }
+    }
 }
-
 
 internal extension UIView {
     var constraintsToSuperview: ConstraintsToSuperview {
@@ -66,21 +80,6 @@ internal extension UIView {
         }
         set {
             setRuntimeObject(newValue, by: &keyTargetedConstraints)
-        }
-    }
-
-    var nsConstraints: NSConstraints {
-        get {
-            if let nsConstraints: NSConstraints = getRuntimeObject(
-                by: &keyNSConstraints
-            ) {
-                return nsConstraints
-            } else {
-                return [:]
-            }
-        }
-        set {
-            setRuntimeObject(newValue, by: &keyNSConstraints)
         }
     }
     
