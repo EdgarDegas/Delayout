@@ -27,7 +27,7 @@ public enum SizeAnchor {
 }
 
 public enum AnchorType {
-    case margin
+    case side
     case safeArea
 }
 
@@ -46,7 +46,7 @@ extension UIView {
         type: AnchorType
     ) -> NSLayoutXAxisAnchor {
         switch type {
-        case .margin:
+        case .side:
             switch anchor {
             case .leading:
                 return leadingAnchor
@@ -80,7 +80,7 @@ extension UIView {
         type: AnchorType
     ) -> NSLayoutYAxisAnchor {
         switch type {
-        case .margin:
+        case .side:
             switch anchor {
             case .top:
                 return topAnchor

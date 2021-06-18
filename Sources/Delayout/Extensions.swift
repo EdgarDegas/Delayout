@@ -7,14 +7,20 @@
 
 import UIKit
 
-public var defaultPriority: UILayoutPriority = .required
+/// The default priority applied by `Delayout`.
+///
+/// Changing this value won't effect any constraint added before.
+public var defaultDelayoutConstraintPriority: UILayoutPriority = .required
 
 public extension UIView {
+    /// Fill the superview.
+    ///
+    /// - Parameter anchorType: If the constraint should be anchored on the side or the safe area.
     @discardableResult
     func fill(
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         padding constant: CGFloat = 0,
-        priority: UILayoutPriority = defaultPriority
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority
     ) -> Self {
         let leadingConstraint = HorizontalConstraint(
             id: UUID().uuidString,
@@ -62,9 +68,9 @@ public extension UIView {
     // MARK: - Horizontal
     // MARK: leading
     func leadingInset(
-        from anchorType: AnchorType = .margin,
+        from anchorType: AnchorType = .side,
         by constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = HorizontalConstraint(
@@ -81,9 +87,9 @@ public extension UIView {
     }
     
     func setLeadingInset(
-        from anchorType: AnchorType = .margin,
+        from anchorType: AnchorType = .side,
         by constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = leadingInset(
@@ -94,9 +100,9 @@ public extension UIView {
     }
     
     func leadingInset(
-        from anchorType: AnchorType = .margin,
+        from anchorType: AnchorType = .side,
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = HorizontalConstraint(
@@ -113,9 +119,9 @@ public extension UIView {
     }
     
     func setLeadingInset(
-        from anchorType: AnchorType = .margin,
+        from anchorType: AnchorType = .side,
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = leadingInset(
@@ -126,9 +132,9 @@ public extension UIView {
     }
     
     func leadingInset(
-        from anchorType: AnchorType = .margin,
+        from anchorType: AnchorType = .side,
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = HorizontalConstraint(
@@ -145,9 +151,9 @@ public extension UIView {
     }
     
     func setLeadingInset(
-        from anchorType: AnchorType = .margin,
+        from anchorType: AnchorType = .side,
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = leadingInset(
@@ -160,9 +166,9 @@ public extension UIView {
     func leading(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         by constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = HorizontalConstraint(
@@ -181,9 +187,9 @@ public extension UIView {
     func setLeading(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         by constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = leading(
@@ -198,9 +204,9 @@ public extension UIView {
     func leading(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = HorizontalConstraint(
@@ -219,9 +225,9 @@ public extension UIView {
     func setLeading(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = leading(
@@ -236,9 +242,9 @@ public extension UIView {
     func leading(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = HorizontalConstraint(
@@ -257,9 +263,9 @@ public extension UIView {
     func setLeading(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = leading(
@@ -275,9 +281,9 @@ public extension UIView {
     func left(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         by constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = HorizontalConstraint(
@@ -296,9 +302,9 @@ public extension UIView {
     func setLeft(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         by constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = left(
@@ -313,9 +319,9 @@ public extension UIView {
     func left(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = HorizontalConstraint(
@@ -334,9 +340,9 @@ public extension UIView {
     func setLeft(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = left(
@@ -351,9 +357,9 @@ public extension UIView {
     func left(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = HorizontalConstraint(
@@ -372,9 +378,9 @@ public extension UIView {
     func setLeft(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = left(
@@ -388,9 +394,9 @@ public extension UIView {
     
     // MARK: trailing
     func trailingInset(
-        from anchorType: AnchorType = .margin,
+        from anchorType: AnchorType = .side,
         by constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = HorizontalConstraint(
@@ -407,9 +413,9 @@ public extension UIView {
     }
     
     func setTrailingInset(
-        from anchorType: AnchorType = .margin,
+        from anchorType: AnchorType = .side,
         by constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = trailingInset(
@@ -420,9 +426,9 @@ public extension UIView {
     }
     
     func trailingInset(
-        from anchorType: AnchorType = .margin,
+        from anchorType: AnchorType = .side,
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = HorizontalConstraint(
@@ -439,9 +445,9 @@ public extension UIView {
     }
     
     func setTrailingInset(
-        from anchorType: AnchorType = .margin,
+        from anchorType: AnchorType = .side,
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = trailingInset(
@@ -452,9 +458,9 @@ public extension UIView {
     }
     
     func trailingInset(
-        from anchorType: AnchorType = .margin,
+        from anchorType: AnchorType = .side,
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = HorizontalConstraint(
@@ -471,9 +477,9 @@ public extension UIView {
     }
     
     func setTrailingInset(
-        from anchorType: AnchorType = .margin,
+        from anchorType: AnchorType = .side,
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = trailingInset(
@@ -486,9 +492,9 @@ public extension UIView {
     func trailing(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         by constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = HorizontalConstraint(
@@ -507,9 +513,9 @@ public extension UIView {
     func setTrailing(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         by constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = trailing(
@@ -524,9 +530,9 @@ public extension UIView {
     func trailing(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = HorizontalConstraint(
@@ -545,9 +551,9 @@ public extension UIView {
     func setTrailing(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = trailing(
@@ -562,9 +568,9 @@ public extension UIView {
     func trailing(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = HorizontalConstraint(
@@ -583,9 +589,9 @@ public extension UIView {
     func setTrailing(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = trailing(
@@ -601,9 +607,9 @@ public extension UIView {
     func right(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         by constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = HorizontalConstraint(
@@ -622,9 +628,9 @@ public extension UIView {
     func setRight(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         by constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = right(
@@ -639,9 +645,9 @@ public extension UIView {
     func right(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = HorizontalConstraint(
@@ -660,9 +666,9 @@ public extension UIView {
     func setRight(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = right(
@@ -677,9 +683,9 @@ public extension UIView {
     func right(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = HorizontalConstraint(
@@ -698,9 +704,9 @@ public extension UIView {
     func setRight(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = right(
@@ -715,9 +721,9 @@ public extension UIView {
     // MARK: center
     @discardableResult
     func centerHorizontally(
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         plus constant: CGFloat = 0,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = HorizontalConstraint(
@@ -735,9 +741,9 @@ public extension UIView {
     
     @discardableResult
     func centerHorizontally(
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         plusGreaterThan constant: CGFloat = 0,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = HorizontalConstraint(
@@ -755,9 +761,9 @@ public extension UIView {
     
     @discardableResult
     func centerHorizontally(
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         plusLessThan constant: CGFloat = 0,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = HorizontalConstraint(
@@ -777,9 +783,9 @@ public extension UIView {
     func horizontalCenter(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         by constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = HorizontalConstraint(
@@ -798,9 +804,9 @@ public extension UIView {
     func alignHorizontalCenter(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         by constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = horizontalCenter(
@@ -815,9 +821,9 @@ public extension UIView {
     func horizontalCenter(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = HorizontalConstraint(
@@ -836,9 +842,9 @@ public extension UIView {
     func alignHorizontalCenter(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = horizontalCenter(
@@ -853,9 +859,9 @@ public extension UIView {
     func horizontalCenter(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = HorizontalConstraint(
@@ -874,9 +880,9 @@ public extension UIView {
     func alignHorizontalCenter(
         to side: HorizontalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = horizontalCenter(
@@ -891,11 +897,11 @@ public extension UIView {
     // MARK: fill
     @discardableResult
     func fillHorizontally(
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         padding constant: CGFloat = 0,
         leadingID: String = UUID().uuidString,
         trailingID: String = UUID().uuidString,
-        priority: UILayoutPriority = defaultPriority
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority
     ) -> Self {
         let leadingConstraint = HorizontalConstraint(
             id: leadingID,
@@ -923,9 +929,9 @@ public extension UIView {
     // MARK: - Vertical
     // MARK: top
     func topInset(
-        from anchorType: AnchorType = .margin,
+        from anchorType: AnchorType = .side,
         by constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = VerticalConstraint(
@@ -942,9 +948,9 @@ public extension UIView {
     }
     
     func setTopInset(
-        from anchorType: AnchorType = .margin,
+        from anchorType: AnchorType = .side,
         by constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = topInset(
@@ -955,9 +961,9 @@ public extension UIView {
     }
     
     func topInset(
-        from anchorType: AnchorType = .margin,
+        from anchorType: AnchorType = .side,
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = VerticalConstraint(
@@ -974,9 +980,9 @@ public extension UIView {
     }
     
     func setTopInset(
-        from anchorType: AnchorType = .margin,
+        from anchorType: AnchorType = .side,
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = topInset(
@@ -987,9 +993,9 @@ public extension UIView {
     }
     
     func topInset(
-        from anchorType: AnchorType = .margin,
+        from anchorType: AnchorType = .side,
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = VerticalConstraint(
@@ -1006,9 +1012,9 @@ public extension UIView {
     }
     
     func setTopInset(
-        from anchorType: AnchorType = .margin,
+        from anchorType: AnchorType = .side,
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = topInset(
@@ -1021,9 +1027,9 @@ public extension UIView {
     func top(
         to side: VerticalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         by constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = VerticalConstraint(
@@ -1042,9 +1048,9 @@ public extension UIView {
     func setTop(
         to side: VerticalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         by constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = top(
@@ -1059,9 +1065,9 @@ public extension UIView {
     func top(
         to side: VerticalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = VerticalConstraint(
@@ -1080,9 +1086,9 @@ public extension UIView {
     func setTop(
         to side: VerticalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = top(
@@ -1097,9 +1103,9 @@ public extension UIView {
     func top(
         to side: VerticalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = VerticalConstraint(
@@ -1118,9 +1124,9 @@ public extension UIView {
     func setTop(
         to side: VerticalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = top(
@@ -1134,9 +1140,9 @@ public extension UIView {
     
     // MARK: bottom
     func bottomInset(
-        from anchorType: AnchorType = .margin,
+        from anchorType: AnchorType = .side,
         by constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = VerticalConstraint(
@@ -1153,9 +1159,9 @@ public extension UIView {
     }
     
     func setBottomInset(
-        from anchorType: AnchorType = .margin,
+        from anchorType: AnchorType = .side,
         by constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = bottomInset(
@@ -1166,9 +1172,9 @@ public extension UIView {
     }
     
     func bottomInset(
-        from anchorType: AnchorType = .margin,
+        from anchorType: AnchorType = .side,
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = VerticalConstraint(
@@ -1185,9 +1191,9 @@ public extension UIView {
     }
     
     func setBottomInset(
-        from anchorType: AnchorType = .margin,
+        from anchorType: AnchorType = .side,
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = bottomInset(
@@ -1198,9 +1204,9 @@ public extension UIView {
     }
     
     func bottomInset(
-        from anchorType: AnchorType = .margin,
+        from anchorType: AnchorType = .side,
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = VerticalConstraint(
@@ -1217,9 +1223,9 @@ public extension UIView {
     }
     
     func setBottomInset(
-        from anchorType: AnchorType = .margin,
+        from anchorType: AnchorType = .side,
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = bottomInset(
@@ -1232,9 +1238,9 @@ public extension UIView {
     func bottom(
         to side: VerticalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         by constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = VerticalConstraint(
@@ -1253,9 +1259,9 @@ public extension UIView {
     func setBottom(
         to side: VerticalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         by constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = bottom(
@@ -1270,9 +1276,9 @@ public extension UIView {
     func bottom(
         to side: VerticalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = VerticalConstraint(
@@ -1291,9 +1297,9 @@ public extension UIView {
     func setBottom(
         to side: VerticalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = bottom(
@@ -1308,9 +1314,9 @@ public extension UIView {
     func bottom(
         to side: VerticalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = VerticalConstraint(
@@ -1329,9 +1335,9 @@ public extension UIView {
     func setBottom(
         to side: VerticalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = bottom(
@@ -1346,9 +1352,9 @@ public extension UIView {
     // MARK: center
     @discardableResult
     func centerVertically(
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         plus constant: CGFloat = 0,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = VerticalConstraint(
@@ -1366,9 +1372,9 @@ public extension UIView {
     
     @discardableResult
     func centerVertically(
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         plusGreaterThan constant: CGFloat = 0,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = VerticalConstraint(
@@ -1386,9 +1392,9 @@ public extension UIView {
     
     @discardableResult
     func centerVertically(
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         plusLessThan constant: CGFloat = 0,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = VerticalConstraint(
@@ -1407,9 +1413,9 @@ public extension UIView {
     func verticalCenter(
         to side: VerticalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         by constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = VerticalConstraint(
@@ -1428,9 +1434,9 @@ public extension UIView {
     func alignVerticalCenter(
         to side: VerticalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         by constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = verticalCenter(
@@ -1445,9 +1451,9 @@ public extension UIView {
     func verticalCenter(
         to side: VerticalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = VerticalConstraint(
@@ -1466,9 +1472,9 @@ public extension UIView {
     func alignVerticalCenter(
         to side: VerticalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = verticalCenter(
@@ -1483,9 +1489,9 @@ public extension UIView {
     func verticalCenter(
         to side: VerticalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = VerticalConstraint(
@@ -1504,9 +1510,9 @@ public extension UIView {
     func alignVerticalCenter(
         to side: VerticalAnchor,
         of view: UIView,
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = verticalCenter(
@@ -1521,11 +1527,11 @@ public extension UIView {
     // MARK: fill
     @discardableResult
     func fillVertically(
-        anchoredTo anchorType: AnchorType = .margin,
+        anchoredTo anchorType: AnchorType = .side,
         padding constant: CGFloat = 0,
         topID: String = UUID().uuidString,
         bottomID: String = UUID().uuidString,
-        priority: UILayoutPriority = defaultPriority
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority
     ) -> Self {
         let topConstraint = VerticalConstraint(
             id: topID,
@@ -1555,7 +1561,7 @@ public extension UIView {
     func heightToWidthRatio(
         _ ratio: CGFloat,
         plus constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = SizeConstraint(
@@ -1574,7 +1580,7 @@ public extension UIView {
     func setHeightToWidthRatio(
         _ ratio: CGFloat,
         plus constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = heightToWidthRatio(ratio, plus: constant, id: id)
@@ -1583,7 +1589,7 @@ public extension UIView {
     func heightToWidthRatio(
         _ ratio: CGFloat,
         plusGreaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = SizeConstraint(
@@ -1602,7 +1608,7 @@ public extension UIView {
     func setHeightToWidthRatio(
         _ ratio: CGFloat,
         plusGreaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = heightToWidthRatio(
@@ -1615,7 +1621,7 @@ public extension UIView {
     func heightToWidthRatio(
         _ ratio: CGFloat,
         plusLessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = SizeConstraint(
@@ -1634,7 +1640,7 @@ public extension UIView {
     func setHeightToWidthRatio(
         _ ratio: CGFloat,
         plusLessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = heightToWidthRatio(
@@ -1648,7 +1654,7 @@ public extension UIView {
     func widthToHeightRatio(
         _ ratio: CGFloat,
         plus constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = SizeConstraint(
@@ -1667,7 +1673,7 @@ public extension UIView {
     func setWidthToHeightRatio(
         _ ratio: CGFloat,
         plus constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = widthToHeightRatio(
@@ -1680,7 +1686,7 @@ public extension UIView {
     func widthToHeightRatio(
         _ ratio: CGFloat,
         plusGreaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = SizeConstraint(
@@ -1699,7 +1705,7 @@ public extension UIView {
     func setWidthToHeightRatio(
         _ ratio: CGFloat,
         plusGreaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = widthToHeightRatio(
@@ -1712,7 +1718,7 @@ public extension UIView {
     func widthToHeightRatio(
         _ ratio: CGFloat,
         plusLessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = SizeConstraint(
@@ -1731,7 +1737,7 @@ public extension UIView {
     func setWidthToHeightRatio(
         _ ratio: CGFloat,
         plusLessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = widthToHeightRatio(
@@ -1747,7 +1753,7 @@ public extension UIView {
         of view: UIView,
         multipliedBy multiplier: CGFloat,
         plus constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = SizeConstraint(
@@ -1768,7 +1774,7 @@ public extension UIView {
         of view: UIView,
         multipliedBy multiplier: CGFloat,
         plus constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = height(
@@ -1785,7 +1791,7 @@ public extension UIView {
         of view: UIView,
         multipliedBy multiplier: CGFloat,
         plusGreaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = SizeConstraint(
@@ -1806,7 +1812,7 @@ public extension UIView {
         of view: UIView,
         multipliedBy multiplier: CGFloat,
         plusGreaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = height(
@@ -1823,7 +1829,7 @@ public extension UIView {
         of view: UIView,
         multipliedBy multiplier: CGFloat,
         plusLessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = SizeConstraint(
@@ -1844,7 +1850,7 @@ public extension UIView {
         of view: UIView,
         multipliedBy multiplier: CGFloat,
         plusLessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = height(
@@ -1858,7 +1864,7 @@ public extension UIView {
     
     func height(
         _ constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = ConstantSizeConstraint(
@@ -1874,7 +1880,7 @@ public extension UIView {
     
     func setHeight(
         _ constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = height(constant, id: id)
@@ -1882,7 +1888,7 @@ public extension UIView {
     
     func height(
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = ConstantSizeConstraint(
@@ -1898,7 +1904,7 @@ public extension UIView {
     
     func setHeight(
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = height(greaterThan: constant, id: id)
@@ -1906,7 +1912,7 @@ public extension UIView {
     
     func height(
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = ConstantSizeConstraint(
@@ -1922,7 +1928,7 @@ public extension UIView {
     
     func setHeight(
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = height(lessThan: constant, id: id)
@@ -1934,7 +1940,7 @@ public extension UIView {
         of view: UIView,
         multipliedBy multiplier: CGFloat,
         plus constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = SizeConstraint(
@@ -1955,7 +1961,7 @@ public extension UIView {
         of view: UIView,
         multipliedBy multiplier: CGFloat,
         plus constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = width(
@@ -1972,7 +1978,7 @@ public extension UIView {
         of view: UIView,
         multipliedBy multiplier: CGFloat,
         plusGreaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = SizeConstraint(
@@ -1993,7 +1999,7 @@ public extension UIView {
         of view: UIView,
         multipliedBy multiplier: CGFloat,
         plusGreaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = width(
@@ -2010,7 +2016,7 @@ public extension UIView {
         of view: UIView,
         multipliedBy multiplier: CGFloat,
         plusLessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = SizeConstraint(
@@ -2031,7 +2037,7 @@ public extension UIView {
         of view: UIView,
         multipliedBy multiplier: CGFloat,
         plusLessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = width(
@@ -2045,7 +2051,7 @@ public extension UIView {
     
     func width(
         _ constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = ConstantSizeConstraint(
@@ -2061,7 +2067,7 @@ public extension UIView {
     
     func setWidth(
         _ constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = width(constant, id: id)
@@ -2069,7 +2075,7 @@ public extension UIView {
     
     func width(
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = ConstantSizeConstraint(
@@ -2085,7 +2091,7 @@ public extension UIView {
     
     func setWidth(
         greaterThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = width(greaterThan: constant, id: id)
@@ -2093,7 +2099,7 @@ public extension UIView {
     
     func width(
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
         let constraint = ConstantSizeConstraint(
@@ -2109,7 +2115,7 @@ public extension UIView {
     
     func setWidth(
         lessThan constant: CGFloat,
-        priority: UILayoutPriority = defaultPriority,
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
         _ = width(lessThan: constant, id: id)
@@ -2120,7 +2126,7 @@ public extension UIView {
         _ constant: CGFloat,
         heightID: String = UUID().uuidString,
         widthID: String = UUID().uuidString,
-        priority: UILayoutPriority = defaultPriority
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority
     ) -> Self {
         setHeight(constant, priority: priority, id: heightID)
         setWidth(constant, priority: priority, id: widthID)
@@ -2131,7 +2137,7 @@ public extension UIView {
         _ constant: CGFloat,
         heightID: String = UUID().uuidString,
         widthID: String = UUID().uuidString,
-        priority: UILayoutPriority = defaultPriority
+        priority: UILayoutPriority = defaultDelayoutConstraintPriority
     ) {
         _ = dimension(constant, heightID: heightID, widthID: widthID, priority: priority)
     }

@@ -93,7 +93,7 @@ private extension UIView {
         _ constraint: HorizontalConstraint,
         to view: UIView
     ) -> NSLayoutConstraint {
-        let anchor = anchor(of: constraint.thisSide, type: .margin)
+        let anchor = anchor(of: constraint.thisSide, type: .side)
         let thatAnchor = view.anchor(
             of: constraint.thatSide,
             type: constraint.anchorType
@@ -126,7 +126,7 @@ private extension UIView {
         _ constraint: VerticalConstraint,
         to view: UIView
     ) -> NSLayoutConstraint {
-        let anchor = anchor(of: constraint.thisSide, type: .margin)
+        let anchor = anchor(of: constraint.thisSide, type: .side)
         let thatAnchor = view.anchor(
             of: constraint.thatSide,
             type: constraint.anchorType

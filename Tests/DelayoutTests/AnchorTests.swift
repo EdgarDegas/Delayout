@@ -13,7 +13,7 @@ final class AnchorTests: XCTestCase {
     
     func testBuildingHorizontalAnchors() {
         XCTAssertTrue(
-            view.anchor(of: .leading, type: .margin) ===
+            view.anchor(of: .leading, type: .side) ===
                 view.leadingAnchor
         )
         XCTAssertTrue(
@@ -22,7 +22,7 @@ final class AnchorTests: XCTestCase {
         )
         
         XCTAssertTrue(
-            view.anchor(of: .left, type: .margin) ===
+            view.anchor(of: .left, type: .side) ===
                 view.leftAnchor
         )
         XCTAssertTrue(
@@ -31,7 +31,7 @@ final class AnchorTests: XCTestCase {
         )
         
         XCTAssertTrue(
-            view.anchor(of: .trailing, type: .margin) ===
+            view.anchor(of: .trailing, type: .side) ===
                 view.trailingAnchor
         )
         XCTAssertTrue(
@@ -40,7 +40,7 @@ final class AnchorTests: XCTestCase {
         )
         
         XCTAssertTrue(
-            view.anchor(of: .right, type: .margin) ===
+            view.anchor(of: .right, type: .side) ===
                 view.rightAnchor
         )
         XCTAssertTrue(
@@ -49,7 +49,7 @@ final class AnchorTests: XCTestCase {
         )
         
         XCTAssertTrue(
-            view.anchor(of: HorizontalAnchor.center, type: .margin) ===
+            view.anchor(of: HorizontalAnchor.center, type: .side) ===
                 view.centerXAnchor
         )
         XCTAssertTrue(
@@ -60,7 +60,7 @@ final class AnchorTests: XCTestCase {
     
     func testBuildingVerticalAnchors() {
         XCTAssertTrue(
-            view.anchor(of: .top, type: .margin) ===
+            view.anchor(of: .top, type: .side) ===
                 view.topAnchor
         )
         XCTAssertTrue(
@@ -69,7 +69,7 @@ final class AnchorTests: XCTestCase {
         )
         
         XCTAssertTrue(
-            view.anchor(of: .bottom, type: .margin) ===
+            view.anchor(of: .bottom, type: .side) ===
                 view.bottomAnchor
         )
         XCTAssertTrue(
@@ -78,7 +78,7 @@ final class AnchorTests: XCTestCase {
         )
         
         XCTAssertTrue(
-            view.anchor(of: VerticalAnchor.center, type: .margin) ===
+            view.anchor(of: VerticalAnchor.center, type: .side) ===
                 view.centerYAnchor
         )
         XCTAssertTrue(
