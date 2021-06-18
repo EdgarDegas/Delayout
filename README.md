@@ -1,8 +1,62 @@
-# Delayout
+## Abstract
 
-> Doc coming soon.
+Delayout allows you to write you UI structure code together with the layout code:
 
-Finally be able to write views as we'd like to:
+```swift
+let someView = SomeView()
+let label = Label()
+
+view {  // view builder provided by Delayout
+    someView
+        .fillHorizontally()
+        .topInset(by: 20)
+    label
+        .top(to: .bottom, of: someView, by: 8)  // constraint to sibling
+        .centerHorizontally()
+        .bottomInset(by: -20)
+}
+```
+
+## Without Delayout
+Even though you might already had the UIKit system _DSLified_, you still have to write your UI structure code and layout code separately:
+```swift
+let someView = SomeView()
+let label = UILabel()
+
+view.subviews {
+    someView
+    label
+}
+
+// ......
+
+someView.Top == view.Top
+label.Top == someView.Bottom
+```
+
+If you try adding constraints between the view and its superview inside the `subviews { /* ... */ }` block, which I bet you had tried, it won't work. Because inside the block, the view has not yet been added to the superview then:
+
+```swift
+view.subviews {
+    someView
+        .fillHorizontally(padding: 20)  // won't work
+}
+```
+
+Let alone setting up constraints between siblings, which leads to a runtime crash:
+```swift
+view.subviews {
+    someView
+    label
+        .make { /* top to someView */ }
+}
+```
+
+Delayout makes it work, in 2 steps: 
+1. Delay
+2. Layout
+
+I attached an example project in the repo. A glance:
 
 ```Swift
 final class View: UIView {
@@ -68,12 +122,8 @@ final class View: UIView {
 }
 ```
 
-Beautifully structured view hierarchy:
-
-<img width="487" alt="image" src="https://user-images.githubusercontent.com/12840982/121811116-e50d9c80-cc95-11eb-968c-8f50b0dd675b.png">
-
-And what we got (detail in the example project):
+And the result:
 
 <video src="https://user-images.githubusercontent.com/12840982/121810785-b93de700-cc94-11eb-8e6c-b22ab760b824.mp4"><video/>
 
-
+The animation is done by updating the constant of a constraint added by Delayout. We'll explain that later.
