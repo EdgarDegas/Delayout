@@ -10,6 +10,55 @@ import UIKit
 public var defaultPriority: UILayoutPriority = .required
 
 public extension UIView {
+    @discardableResult
+    func fill(
+        anchoredTo anchorType: AnchorType = .margin,
+        padding constant: CGFloat = 0,
+        priority: UILayoutPriority = defaultPriority
+    ) -> Self {
+        let leadingConstraint = HorizontalConstraint(
+            id: UUID().uuidString,
+            thisSide: .leading,
+            thatSide: .leading,
+            anchorType: anchorType,
+            equality: .equal,
+            priority: priority,
+            constant: constant
+        )
+        let trailingConstraint = HorizontalConstraint(
+            id: UUID().uuidString,
+            thisSide: .trailing,
+            thatSide: .trailing,
+            anchorType: anchorType,
+            equality: .equal,
+            priority: priority,
+            constant: -constant
+        )
+        let topConstraint = VerticalConstraint(
+            id: UUID().uuidString,
+            thisSide: .top,
+            thatSide: .top,
+            anchorType: anchorType,
+            equality: .equal,
+            priority: priority,
+            constant: constant
+        )
+        let bottomConstraint = VerticalConstraint(
+            id: UUID().uuidString,
+            thisSide: .bottom,
+            thatSide: .bottom,
+            anchorType: anchorType,
+            equality: .equal,
+            priority: priority,
+            constant: -constant
+        )
+        tryApplyingConstraintToSuperview(leadingConstraint)
+        tryApplyingConstraintToSuperview(trailingConstraint)
+        tryApplyingConstraintToSuperview(topConstraint)
+        tryApplyingConstraintToSuperview(bottomConstraint)
+        return self
+    }
+    
     // MARK: - Horizontal
     // MARK: leading
     func leadingInset(
