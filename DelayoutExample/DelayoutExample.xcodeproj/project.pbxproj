@@ -3,40 +3,25 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B38BA2542674E158003F6F2B /* UIView+DelayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38BA2502674E158003F6F2B /* UIView+DelayoutConstraints.swift */; };
-		B38BA2552674E158003F6F2B /* UIView+ApplyConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38BA2512674E158003F6F2B /* UIView+ApplyConstraint.swift */; };
-		B38BA2562674E158003F6F2B /* DelayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38BA2522674E158003F6F2B /* DelayoutConstraint.swift */; };
-		B38BA2572674E158003F6F2B /* WeakRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38BA2532674E158003F6F2B /* WeakRef.swift */; };
+		B30F875A267CE336001368B5 /* Delayout in Frameworks */ = {isa = PBXBuildFile; productRef = B30F8759267CE336001368B5 /* Delayout */; };
 		B38BA2592674E189003F6F2B /* ExampleDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38BA2582674E189003F6F2B /* ExampleDSL.swift */; };
 		B38BA25B2674F866003F6F2B /* ViewController+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38BA25A2674F866003F6F2B /* ViewController+View.swift */; };
-		B38BA2612675ADCD003F6F2B /* TargetedDelayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38BA2602675ADCD003F6F2B /* TargetedDelayoutConstraint.swift */; };
 		B3D027E8266A81F900236FEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D027E7266A81F900236FEC /* AppDelegate.swift */; };
 		B3D027EA266A81F900236FEC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D027E9266A81F900236FEC /* SceneDelegate.swift */; };
 		B3D027EC266A81F900236FEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D027EB266A81F900236FEC /* ViewController.swift */; };
 		B3D027EF266A81F900236FEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3D027ED266A81F900236FEC /* Main.storyboard */; };
 		B3D027F1266A81FB00236FEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3D027F0266A81FB00236FEC /* Assets.xcassets */; };
 		B3D027F4266A81FB00236FEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3D027F2266A81FB00236FEC /* LaunchScreen.storyboard */; };
-		B3D02801266A85C900236FEC /* Built.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D02800266A85C900236FEC /* Built.swift */; };
-		B3D02803266A879F00236FEC /* Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D02802266A879F00236FEC /* Building.swift */; };
-		B3D02805266A8A4D00236FEC /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D02804266A8A4D00236FEC /* Builder.swift */; };
-		B3D0280C266AABD600236FEC /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D02807266AABD600236FEC /* Storable.swift */; };
-		B3D0280D266AABD600236FEC /* Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D02808266AABD600236FEC /* Anchor.swift */; };
-		B3D0280E266AABD600236FEC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D02809266AABD600236FEC /* Extensions.swift */; };
-		B3D0280F266AABD600236FEC /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D0280A266AABD600236FEC /* Runtime.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B38BA2502674E158003F6F2B /* UIView+DelayoutConstraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+DelayoutConstraints.swift"; sourceTree = "<group>"; };
-		B38BA2512674E158003F6F2B /* UIView+ApplyConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ApplyConstraint.swift"; sourceTree = "<group>"; };
-		B38BA2522674E158003F6F2B /* DelayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelayoutConstraint.swift; sourceTree = "<group>"; };
-		B38BA2532674E158003F6F2B /* WeakRef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakRef.swift; sourceTree = "<group>"; };
+		B30F8757267CE2F6001368B5 /* Delayout */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Delayout; path = ..; sourceTree = "<group>"; };
 		B38BA2582674E189003F6F2B /* ExampleDSL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleDSL.swift; sourceTree = "<group>"; };
 		B38BA25A2674F866003F6F2B /* ViewController+View.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = "ViewController+View.swift"; sourceTree = "<group>"; tabWidth = 2; };
-		B38BA2602675ADCD003F6F2B /* TargetedDelayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetedDelayoutConstraint.swift; sourceTree = "<group>"; };
 		B3D027E4266A81F900236FEC /* DelayoutExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DelayoutExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3D027E7266A81F900236FEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3D027E9266A81F900236FEC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,13 +30,6 @@
 		B3D027F0266A81FB00236FEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3D027F3266A81FB00236FEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3D027F5266A81FB00236FEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B3D02800266A85C900236FEC /* Built.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Built.swift; sourceTree = "<group>"; };
-		B3D02802266A879F00236FEC /* Building.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
-		B3D02804266A8A4D00236FEC /* Builder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
-		B3D02807266AABD600236FEC /* Storable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
-		B3D02808266AABD600236FEC /* Anchor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Anchor.swift; sourceTree = "<group>"; };
-		B3D02809266AABD600236FEC /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		B3D0280A266AABD600236FEC /* Runtime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Runtime.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,18 +37,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B30F875A267CE336001368B5 /* Delayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B30F8758267CE336001368B5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B3D027DB266A81F900236FEC = {
 			isa = PBXGroup;
 			children = (
-				B3D027FB266A822500236FEC /* Delayout */,
+				B30F8757267CE2F6001368B5 /* Delayout */,
 				B3D027E6266A81F900236FEC /* DelayoutExample */,
 				B3D027E5266A81F900236FEC /* Products */,
+				B30F8758267CE336001368B5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,26 +85,6 @@
 			path = DelayoutExample;
 			sourceTree = "<group>";
 		};
-		B3D027FB266A822500236FEC /* Delayout */ = {
-			isa = PBXGroup;
-			children = (
-				B38BA2522674E158003F6F2B /* DelayoutConstraint.swift */,
-				B38BA2512674E158003F6F2B /* UIView+ApplyConstraint.swift */,
-				B38BA2502674E158003F6F2B /* UIView+DelayoutConstraints.swift */,
-				B38BA2532674E158003F6F2B /* WeakRef.swift */,
-				B3D02802266A879F00236FEC /* Building.swift */,
-				B38BA2602675ADCD003F6F2B /* TargetedDelayoutConstraint.swift */,
-				B3D02808266AABD600236FEC /* Anchor.swift */,
-				B3D02809266AABD600236FEC /* Extensions.swift */,
-				B3D0280A266AABD600236FEC /* Runtime.swift */,
-				B3D02807266AABD600236FEC /* Storable.swift */,
-				B3D02804266A8A4D00236FEC /* Builder.swift */,
-				B3D02800266A85C900236FEC /* Built.swift */,
-			);
-			name = Delayout;
-			path = ../Sources/Delayout;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,6 +101,9 @@
 			dependencies = (
 			);
 			name = DelayoutExample;
+			packageProductDependencies = (
+				B30F8759267CE336001368B5 /* Delayout */,
+			);
 			productName = DelayoutExample;
 			productReference = B3D027E4266A81F900236FEC /* DelayoutExample.app */;
 			productType = "com.apple.product-type.application";
@@ -188,23 +158,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3D02803266A879F00236FEC /* Building.swift in Sources */,
-				B3D02801266A85C900236FEC /* Built.swift in Sources */,
-				B38BA2552674E158003F6F2B /* UIView+ApplyConstraint.swift in Sources */,
 				B3D027EC266A81F900236FEC /* ViewController.swift in Sources */,
 				B3D027E8266A81F900236FEC /* AppDelegate.swift in Sources */,
-				B3D0280E266AABD600236FEC /* Extensions.swift in Sources */,
-				B3D0280F266AABD600236FEC /* Runtime.swift in Sources */,
-				B38BA2572674E158003F6F2B /* WeakRef.swift in Sources */,
-				B38BA2562674E158003F6F2B /* DelayoutConstraint.swift in Sources */,
 				B38BA25B2674F866003F6F2B /* ViewController+View.swift in Sources */,
-				B38BA2542674E158003F6F2B /* UIView+DelayoutConstraints.swift in Sources */,
-				B38BA2612675ADCD003F6F2B /* TargetedDelayoutConstraint.swift in Sources */,
 				B38BA2592674E189003F6F2B /* ExampleDSL.swift in Sources */,
-				B3D0280C266AABD600236FEC /* Storable.swift in Sources */,
 				B3D027EA266A81F900236FEC /* SceneDelegate.swift in Sources */,
-				B3D0280D266AABD600236FEC /* Anchor.swift in Sources */,
-				B3D02805266A8A4D00236FEC /* Builder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +364,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B30F8759267CE336001368B5 /* Delayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Delayout;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B3D027DC266A81F900236FEC /* Project object */;
 }

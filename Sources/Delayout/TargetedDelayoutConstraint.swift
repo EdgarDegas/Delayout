@@ -12,6 +12,6 @@ struct TargetedDelayoutConstraint {
     var constraint: DelayoutConstraint
     
     var identifier: String {
-        constraint.identifier
+        constraint.id
     }
 }

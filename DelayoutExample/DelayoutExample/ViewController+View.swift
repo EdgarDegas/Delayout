@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Delayout
 
 extension ViewController {
   final class View: UIView {
@@ -64,7 +65,7 @@ extension ViewController {
             of: self,
             by: 0,
             priority: .defaultHigh,
-            identifiedBy: detailViewTopConstraintID
+            id: detailViewTopConstraintID
           )
           .store(as: &detailView)
       }
