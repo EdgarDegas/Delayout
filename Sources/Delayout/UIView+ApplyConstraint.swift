@@ -14,7 +14,7 @@ internal extension UIView {
         swizzle()
         guard let superview = superview else {
             // add delayout constraint but not apply
-            constraintsToSuperview[constraint.identifier] = constraint
+            constraintsToSuperview[constraint.id] = constraint
             return
         }
         applyTargetedConstraint(
@@ -38,7 +38,7 @@ internal extension UIView {
             return
         }
         guard view.superview != nil else {
-            targetedConstraints[constraint.identifier] = targetedConstraint
+            targetedConstraints[constraint.id] = targetedConstraint
             return
         }
         applyTargetedConstraint(targetedConstraint)
@@ -49,7 +49,7 @@ internal extension UIView {
     ) {
         guard let target = targetedConstraint.target else { return }
         let constraint = targetedConstraint.constraint
-        constraintsAddedByDelayout[constraint.identifier] = {
+        constraintsAddedByDelayout[constraint.id] = {
             if let constraint = constraint as? HorizontalConstraint {
                 return applyHorizontalConstraint(constraint, to: target)
             } else if let constraint = constraint as? VerticalConstraint {
@@ -84,7 +84,7 @@ internal extension UIView {
         }()
         nsConstraint.priority = constraint.priority
         nsConstraint.isActive = true
-        constraintsAddedByDelayout[constraint.identifier] = nsConstraint
+        constraintsAddedByDelayout[constraint.id] = nsConstraint
     }
 }
 
@@ -93,7 +93,7 @@ private extension UIView {
         _ constraint: HorizontalConstraint,
         to view: UIView
     ) -> NSLayoutConstraint {
-        let anchor = anchor(of: constraint.thisSide, type: .margin)
+        let anchor = anchor(of: constraint.thisSide, type: .side)
         let thatAnchor = view.anchor(
             of: constraint.thatSide,
             type: constraint.anchorType
@@ -126,7 +126,7 @@ private extension UIView {
         _ constraint: VerticalConstraint,
         to view: UIView
     ) -> NSLayoutConstraint {
-        let anchor = anchor(of: constraint.thisSide, type: .margin)
+        let anchor = anchor(of: constraint.thisSide, type: .side)
         let thatAnchor = view.anchor(
             of: constraint.thatSide,
             type: constraint.anchorType
@@ -166,16 +166,19 @@ private extension UIView {
             case .equal:
                 return anchor.constraint(
                     equalTo: thatAnchor,
+                    multiplier: constraint.multiplier,
                     constant: constraint.constant
                 )
             case .greater:
                 return anchor.constraint(
                     greaterThanOrEqualTo: thatAnchor,
+                    multiplier: constraint.multiplier,
                     constant: constraint.constant
                 )
             case .less:
                 return anchor.constraint(
                     lessThanOrEqualTo: thatAnchor,
+                    multiplier: constraint.multiplier,
                     constant: constraint.constant
                 )
             }

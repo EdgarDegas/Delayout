@@ -14,13 +14,13 @@ public enum Equality {
 }
 
 public protocol DelayoutConstraint {
-    var identifier: String { get }
+    var id: String { get }
     var equality: Equality { get }
     var priority: UILayoutPriority { get }
 }
 
 public struct HorizontalConstraint: DelayoutConstraint {
-    public var identifier: String
+    public var id: String
 
     public var thisSide: HorizontalAnchor
     public var thatSide: HorizontalAnchor
@@ -31,7 +31,7 @@ public struct HorizontalConstraint: DelayoutConstraint {
 }
 
 public struct VerticalConstraint: DelayoutConstraint {
-    public var identifier: String
+    public var id: String
     
     public var thisSide: VerticalAnchor
     public var thatSide: VerticalAnchor
@@ -42,7 +42,7 @@ public struct VerticalConstraint: DelayoutConstraint {
 }
 
 public struct SizeConstraint: DelayoutConstraint {
-    public var identifier: String
+    public var id: String
     
     public var thisSide: SizeAnchor
     public var thatSide: SizeAnchor
@@ -53,7 +53,7 @@ public struct SizeConstraint: DelayoutConstraint {
 }
 
 public struct ConstantSizeConstraint {
-    public var identifier: String
+    public var id: String
     
     public var side: SizeAnchor
     public var equality: Equality
