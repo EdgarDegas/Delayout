@@ -33,7 +33,7 @@ final class DelayoutTests: XCTestCase {
         
         superview {
             view1
-                .leadingInset(by: 20, identifiedBy: "id")
+                .leadingInset(by: 20, id: "id")
         }
         
         let constraint = view1.constraintsAddedByDelayout["id"]

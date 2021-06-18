@@ -15,7 +15,7 @@ final class NSConstraintTests: XCTestCase {
     /// Anchor correction has been verifed in `AnchorTests`.
     func testBuildingLeadingConstraint() {
         let constraint = HorizontalConstraint(
-            identifier: "id",
+            id: "id",
             thisSide: .leading,
             thatSide: .leading,
             anchorType: .margin,
@@ -61,7 +61,7 @@ final class NSConstraintTests: XCTestCase {
     /// Anchor correction has been verifed in `AnchorTests`.
     func testBuildingTopConstraint() {
         let constraint = VerticalConstraint(
-            identifier: "id",
+            id: "id",
             thisSide: .top,
             thatSide: .top,
             anchorType: .margin,
@@ -107,7 +107,7 @@ final class NSConstraintTests: XCTestCase {
     /// Anchor correction has been verifed in `AnchorTests`.
     func testBuildingWidthConstraint() {
         let constraint = SizeConstraint(
-            identifier: "id",
+            id: "id",
             thisSide: .width,
             thatSide: .width,
             multiplier: 2,
@@ -154,7 +154,7 @@ final class NSConstraintTests: XCTestCase {
     /// Anchor correction has been verifed in `AnchorTests`.
     func testBuildingConstantWidthConstraint() {
         let constraint = ConstantSizeConstraint(
-            identifier: "id",
+            id: "id",
             side: .width,
             equality: .less,
             priority: .init(999),

@@ -14,7 +14,7 @@ internal extension UIView {
         swizzle()
         guard let superview = superview else {
             // add delayout constraint but not apply
-            constraintsToSuperview[constraint.identifier] = constraint
+            constraintsToSuperview[constraint.id] = constraint
             return
         }
         applyTargetedConstraint(
@@ -38,7 +38,7 @@ internal extension UIView {
             return
         }
         guard view.superview != nil else {
-            targetedConstraints[constraint.identifier] = targetedConstraint
+            targetedConstraints[constraint.id] = targetedConstraint
             return
         }
         applyTargetedConstraint(targetedConstraint)
@@ -49,7 +49,7 @@ internal extension UIView {
     ) {
         guard let target = targetedConstraint.target else { return }
         let constraint = targetedConstraint.constraint
-        constraintsAddedByDelayout[constraint.identifier] = {
+        constraintsAddedByDelayout[constraint.id] = {
             if let constraint = constraint as? HorizontalConstraint {
                 return applyHorizontalConstraint(constraint, to: target)
             } else if let constraint = constraint as? VerticalConstraint {
@@ -84,7 +84,7 @@ internal extension UIView {
         }()
         nsConstraint.priority = constraint.priority
         nsConstraint.isActive = true
-        constraintsAddedByDelayout[constraint.identifier] = nsConstraint
+        constraintsAddedByDelayout[constraint.id] = nsConstraint
     }
 }
 
