@@ -166,16 +166,19 @@ private extension UIView {
             case .equal:
                 return anchor.constraint(
                     equalTo: thatAnchor,
+                    multiplier: constraint.multiplier,
                     constant: constraint.constant
                 )
             case .greater:
                 return anchor.constraint(
                     greaterThanOrEqualTo: thatAnchor,
+                    multiplier: constraint.multiplier,
                     constant: constraint.constant
                 )
             case .less:
                 return anchor.constraint(
                     lessThanOrEqualTo: thatAnchor,
+                    multiplier: constraint.multiplier,
                     constant: constraint.constant
                 )
             }
