@@ -65,7 +65,7 @@ extension ViewController {
             of: self,
             by: 0,
             priority: .defaultHigh,
-            identifiedBy: detailViewTopConstraintID
+            id: detailViewTopConstraintID
           )
           .store(as: &detailView)
       }
