@@ -124,6 +124,6 @@ final class View: UIView {
 
 And the result:
 
-<video src="https://user-images.githubusercontent.com/12840982/121810785-b93de700-cc94-11eb-8e6c-b22ab760b824.mp4"><video/>
+[Video](https://user-images.githubusercontent.com/12840982/121810785-b93de700-cc94-11eb-8e6c-b22ab760b824.mp4)
 
-The animation is done by updating the constant of a constraint added by Delayout. We'll explain that later.
+The animation is done by updating the constant of a constraint added by Delayout, explain in [this page](https://github.com/EdgarDegas/Delayout/wiki/Update-Constraints).
