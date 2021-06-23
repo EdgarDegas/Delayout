@@ -913,7 +913,7 @@ public extension UIView {
     @discardableResult
     func centerHorizontally(
         anchoredTo anchorType: AnchorType = .side,
-        plusGreaterThan constant: CGFloat = 0,
+        plusGreaterThan constant: CGFloat,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
@@ -933,7 +933,7 @@ public extension UIView {
     @discardableResult
     func centerHorizontally(
         anchoredTo anchorType: AnchorType = .side,
-        plusLessThan constant: CGFloat = 0,
+        plusLessThan constant: CGFloat,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
@@ -1544,7 +1544,7 @@ public extension UIView {
     @discardableResult
     func centerVertically(
         anchoredTo anchorType: AnchorType = .side,
-        plusGreaterThan constant: CGFloat = 0,
+        plusGreaterThan constant: CGFloat,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
@@ -1564,7 +1564,7 @@ public extension UIView {
     @discardableResult
     func centerVertically(
         anchoredTo anchorType: AnchorType = .side,
-        plusLessThan constant: CGFloat = 0,
+        plusLessThan constant: CGFloat,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
