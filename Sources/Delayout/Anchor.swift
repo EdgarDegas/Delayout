@@ -29,6 +29,9 @@ public enum SizeAnchor {
 public enum AnchorType {
     case side
     case safeArea
+    case layoutMargins
+    case readableContent
+    case custom(UILayoutGuide)
 }
 
 extension UIView {
@@ -60,18 +63,13 @@ extension UIView {
                 return rightAnchor
             }
         case .safeArea:
-            switch anchor {
-            case .leading:
-                return safeAreaLayoutGuide.leadingAnchor
-            case .trailing:
-                return safeAreaLayoutGuide.trailingAnchor
-            case .center:
-                return safeAreaLayoutGuide.centerXAnchor
-            case .left:
-                return safeAreaLayoutGuide.leftAnchor
-            case .right:
-                return safeAreaLayoutGuide.rightAnchor
-            }
+            return safeAreaLayoutGuide.anchor(of: anchor)
+        case .layoutMargins:
+            return layoutMarginsGuide.anchor(of: anchor)
+        case .readableContent:
+            return readableContentGuide.anchor(of: anchor)
+        case .custom(let guide):
+            return guide.anchor(of: anchor)
         }
     }
     
@@ -90,14 +88,50 @@ extension UIView {
                 return centerYAnchor
             }
         case .safeArea:
-            switch anchor {
-            case .top:
-                return safeAreaLayoutGuide.topAnchor
-            case .bottom:
-                return safeAreaLayoutGuide.bottomAnchor
-            case .center:
-                return safeAreaLayoutGuide.centerYAnchor
-            }
+            return safeAreaLayoutGuide.anchor(of: anchor)
+        case .layoutMargins:
+            return layoutMarginsGuide.anchor(of: anchor)
+        case .readableContent:
+            return readableContentGuide.anchor(of: anchor)
+        case .custom(let guide):
+            return guide.anchor(of: anchor)
+        }
+    }
+}
+
+extension UILayoutGuide {
+    func anchor(of anchor: HorizontalAnchor) -> NSLayoutXAxisAnchor {
+        switch anchor {
+        case .leading:
+            return leadingAnchor
+        case .trailing:
+            return trailingAnchor
+        case .center:
+            return centerXAnchor
+        case .left:
+            return leftAnchor
+        case .right:
+            return rightAnchor
+        }
+    }
+    
+    func anchor(of anchor: VerticalAnchor) -> NSLayoutYAxisAnchor {
+        switch anchor {
+        case .top:
+            return topAnchor
+        case .bottom:
+            return bottomAnchor
+        case .center:
+            return centerYAnchor
+        }
+    }
+    
+    func anchor(of anchor: SizeAnchor) -> NSLayoutDimension {
+        switch anchor {
+        case .width:
+            return widthAnchor
+        case .height:
+            return heightAnchor
         }
     }
 }
