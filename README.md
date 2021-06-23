@@ -17,6 +17,8 @@ view {  // view builder provided by Delayout
 }
 ```
 
+[Read wiki for detail.](https://github.com/EdgarDegas/Delayout/wiki)
+
 ## Without Delayout
 Even though you might already had the UIKit system _DSLified_, you still have to write your UI structure code and layout code separately:
 ```swift
