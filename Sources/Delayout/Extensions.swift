@@ -2292,8 +2292,8 @@ public extension UIView {
         _ = width(lessThan: constant, id: id)
     }
     
-    // MARK: dimension
-    func dimension(
+    // MARK: size
+    func size(
         _ constant: CGFloat,
         heightID: String = UUID().uuidString,
         widthID: String = UUID().uuidString,
@@ -2304,12 +2304,12 @@ public extension UIView {
         return self
     }
     
-    func setDimension(
+    func setSize(
         _ constant: CGFloat,
         heightID: String = UUID().uuidString,
         widthID: String = UUID().uuidString,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority
     ) {
-        _ = dimension(constant, heightID: heightID, widthID: widthID, priority: priority)
+        _ = size(constant, heightID: heightID, widthID: widthID, priority: priority)
     }
 }

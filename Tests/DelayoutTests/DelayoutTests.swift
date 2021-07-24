@@ -11,11 +11,11 @@ final class DelayoutTests: XCTestCase {
         let superview = UIView()
         superview {
             view1!
-                .dimension(20)
+                .size(20)
                 .leadingInset(by: 20)
                 .trailing(to: .leading, of: view2!, by: 20)
             view2!
-                .dimension(20)
+                .size(20)
                 .trailingInset(by: -20)
         }
         
