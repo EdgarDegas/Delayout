@@ -219,7 +219,7 @@ public extension UIView {
         to side: HorizontalAnchor,
         of view: UIView,
         anchoredTo anchorType: AnchorType = .side,
-        by constant: CGFloat,
+        by constant: CGFloat = 0,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
@@ -247,7 +247,7 @@ public extension UIView {
         to side: HorizontalAnchor,
         of view: UIView,
         anchoredTo anchorType: AnchorType = .side,
-        by constant: CGFloat,
+        by constant: CGFloat = 0,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
@@ -376,7 +376,7 @@ public extension UIView {
         to side: HorizontalAnchor,
         of view: UIView,
         anchoredTo anchorType: AnchorType = .side,
-        by constant: CGFloat,
+        by constant: CGFloat = 0,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
@@ -404,7 +404,7 @@ public extension UIView {
         to side: HorizontalAnchor,
         of view: UIView,
         anchoredTo anchorType: AnchorType = .side,
-        by constant: CGFloat,
+        by constant: CGFloat = 0,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
@@ -664,7 +664,7 @@ public extension UIView {
         to side: HorizontalAnchor,
         of view: UIView,
         anchoredTo anchorType: AnchorType = .side,
-        by constant: CGFloat,
+        by constant: CGFloat = 0,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
@@ -685,7 +685,7 @@ public extension UIView {
         to side: HorizontalAnchor,
         of view: UIView,
         anchoredTo anchorType: AnchorType = .side,
-        by constant: CGFloat,
+        by constant: CGFloat = 0,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
@@ -779,7 +779,7 @@ public extension UIView {
         to side: HorizontalAnchor,
         of view: UIView,
         anchoredTo anchorType: AnchorType = .side,
-        by constant: CGFloat,
+        by constant: CGFloat = 0,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
@@ -800,7 +800,7 @@ public extension UIView {
         to side: HorizontalAnchor,
         of view: UIView,
         anchoredTo anchorType: AnchorType = .side,
-        by constant: CGFloat,
+        by constant: CGFloat = 0,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
@@ -955,7 +955,7 @@ public extension UIView {
         to side: HorizontalAnchor,
         of view: UIView,
         anchoredTo anchorType: AnchorType = .side,
-        by constant: CGFloat,
+        by constant: CGFloat = 0,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
@@ -976,7 +976,7 @@ public extension UIView {
         to side: HorizontalAnchor,
         of view: UIView,
         anchoredTo anchorType: AnchorType = .side,
-        by constant: CGFloat,
+        by constant: CGFloat = 0,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
@@ -1199,7 +1199,7 @@ public extension UIView {
         to side: VerticalAnchor,
         of view: UIView,
         anchoredTo anchorType: AnchorType = .side,
-        by constant: CGFloat,
+        by constant: CGFloat = 0,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
@@ -1220,7 +1220,7 @@ public extension UIView {
         to side: VerticalAnchor,
         of view: UIView,
         anchoredTo anchorType: AnchorType = .side,
-        by constant: CGFloat,
+        by constant: CGFloat = 0,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
@@ -1410,7 +1410,7 @@ public extension UIView {
         to side: VerticalAnchor,
         of view: UIView,
         anchoredTo anchorType: AnchorType = .side,
-        by constant: CGFloat,
+        by constant: CGFloat = 0,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
@@ -1431,7 +1431,7 @@ public extension UIView {
         to side: VerticalAnchor,
         of view: UIView,
         anchoredTo anchorType: AnchorType = .side,
-        by constant: CGFloat,
+        by constant: CGFloat = 0,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
@@ -1585,7 +1585,7 @@ public extension UIView {
         to side: VerticalAnchor,
         of view: UIView,
         anchoredTo anchorType: AnchorType = .side,
-        by constant: CGFloat,
+        by constant: CGFloat = 0,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
@@ -1606,7 +1606,7 @@ public extension UIView {
         to side: VerticalAnchor,
         of view: UIView,
         anchoredTo anchorType: AnchorType = .side,
-        by constant: CGFloat,
+        by constant: CGFloat = 0,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
