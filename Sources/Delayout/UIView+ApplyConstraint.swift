@@ -65,7 +65,7 @@ internal extension UIView {
     func applyConstantSizeConstraint(
         _ constraint: ConstantSizeConstraint
     ) {
-        let anchor = anchor(of: constraint.side)
+        let anchor = nsAnchor(of: constraint.side)
         let nsConstraint: NSLayoutConstraint = {
             switch constraint.equality {
             case .equal:
@@ -93,8 +93,8 @@ private extension UIView {
         _ constraint: HorizontalConstraint,
         to view: UIView
     ) -> NSLayoutConstraint {
-        let anchor = anchor(of: constraint.thisSide, type: .side)
-        let thatAnchor = view.anchor(
+        let anchor = nsAnchor(of: constraint.thisSide, type: .side)
+        let thatAnchor = view.nsAnchor(
             of: constraint.thatSide,
             type: constraint.anchorPoint
         )
@@ -126,8 +126,8 @@ private extension UIView {
         _ constraint: VerticalConstraint,
         to view: UIView
     ) -> NSLayoutConstraint {
-        let anchor = anchor(of: constraint.thisSide, type: .side)
-        let thatAnchor = view.anchor(
+        let anchor = nsAnchor(of: constraint.thisSide, type: .side)
+        let thatAnchor = view.nsAnchor(
             of: constraint.thatSide,
             type: constraint.anchorPoint
         )
@@ -159,8 +159,8 @@ private extension UIView {
         _ constraint: SizeConstraint,
         to view: UIView
     ) -> NSLayoutConstraint {
-        let anchor = anchor(of: constraint.thisSide)
-        let thatAnchor = view.anchor(of: constraint.thatSide)
+        let anchor = nsAnchor(of: constraint.thisSide)
+        let thatAnchor = view.nsAnchor(of: constraint.thatSide)
         let nsConstraint: NSLayoutConstraint = {
             switch constraint.equality {
             case .equal:
