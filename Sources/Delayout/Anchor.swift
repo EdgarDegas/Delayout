@@ -26,7 +26,7 @@ public enum SizeAnchor {
     case height
 }
 
-public enum AnchorType {
+public enum AnchorPoint {
     case side
     case safeArea
     case layoutMargins
@@ -35,7 +35,7 @@ public enum AnchorType {
 }
 
 extension UIView {
-    func anchor(of anchor: SizeAnchor) -> NSLayoutDimension {
+    func nsAnchor(of anchor: SizeAnchor) -> NSLayoutDimension {
         switch anchor {
         case .height:
             return heightAnchor
@@ -44,9 +44,9 @@ extension UIView {
         }
     }
     
-    func anchor(
+    func nsAnchor(
         of anchor: HorizontalAnchor,
-        type: AnchorType
+        type: AnchorPoint
     ) -> NSLayoutXAxisAnchor {
         switch type {
         case .side:
@@ -63,19 +63,19 @@ extension UIView {
                 return rightAnchor
             }
         case .safeArea:
-            return safeAreaLayoutGuide.anchor(of: anchor)
+            return safeAreaLayoutGuide.nsAnchor(of: anchor)
         case .layoutMargins:
-            return layoutMarginsGuide.anchor(of: anchor)
+            return layoutMarginsGuide.nsAnchor(of: anchor)
         case .readableContent:
-            return readableContentGuide.anchor(of: anchor)
+            return readableContentGuide.nsAnchor(of: anchor)
         case .custom(let guide):
-            return guide.anchor(of: anchor)
+            return guide.nsAnchor(of: anchor)
         }
     }
     
-    func anchor(
+    func nsAnchor(
         of anchor: VerticalAnchor,
-        type: AnchorType
+        type: AnchorPoint
     ) -> NSLayoutYAxisAnchor {
         switch type {
         case .side:
@@ -88,19 +88,19 @@ extension UIView {
                 return centerYAnchor
             }
         case .safeArea:
-            return safeAreaLayoutGuide.anchor(of: anchor)
+            return safeAreaLayoutGuide.nsAnchor(of: anchor)
         case .layoutMargins:
-            return layoutMarginsGuide.anchor(of: anchor)
+            return layoutMarginsGuide.nsAnchor(of: anchor)
         case .readableContent:
-            return readableContentGuide.anchor(of: anchor)
+            return readableContentGuide.nsAnchor(of: anchor)
         case .custom(let guide):
-            return guide.anchor(of: anchor)
+            return guide.nsAnchor(of: anchor)
         }
     }
 }
 
 extension UILayoutGuide {
-    func anchor(of anchor: HorizontalAnchor) -> NSLayoutXAxisAnchor {
+    func nsAnchor(of anchor: HorizontalAnchor) -> NSLayoutXAxisAnchor {
         switch anchor {
         case .leading:
             return leadingAnchor
@@ -115,7 +115,7 @@ extension UILayoutGuide {
         }
     }
     
-    func anchor(of anchor: VerticalAnchor) -> NSLayoutYAxisAnchor {
+    func nsAnchor(of anchor: VerticalAnchor) -> NSLayoutYAxisAnchor {
         switch anchor {
         case .top:
             return topAnchor
@@ -126,7 +126,7 @@ extension UILayoutGuide {
         }
     }
     
-    func anchor(of anchor: SizeAnchor) -> NSLayoutDimension {
+    func nsAnchor(of anchor: SizeAnchor) -> NSLayoutDimension {
         switch anchor {
         case .width:
             return widthAnchor
