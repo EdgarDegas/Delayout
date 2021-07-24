@@ -24,7 +24,7 @@ public struct HorizontalConstraint: DelayoutConstraint {
 
     public var thisSide: HorizontalAnchor
     public var thatSide: HorizontalAnchor
-    public var anchorType: AnchorType
+    public var anchorPoint: AnchorPoint
     public var equality: Equality
     public var priority: UILayoutPriority
     public var constant: CGFloat
@@ -35,7 +35,7 @@ public struct VerticalConstraint: DelayoutConstraint {
     
     public var thisSide: VerticalAnchor
     public var thatSide: VerticalAnchor
-    public var anchorType: AnchorType
+    public var anchorPoint: AnchorPoint
     public var equality: Equality
     public var priority: UILayoutPriority
     public var constant: CGFloat

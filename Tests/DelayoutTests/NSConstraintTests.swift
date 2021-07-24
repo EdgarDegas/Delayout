@@ -18,7 +18,7 @@ final class NSConstraintTests: XCTestCase {
             id: "id",
             thisSide: .leading,
             thatSide: .leading,
-            anchorType: .side,
+            anchorPoint: .side,
             equality: .less,
             priority: .init(999),
             constant: 99
@@ -64,7 +64,7 @@ final class NSConstraintTests: XCTestCase {
             id: "id",
             thisSide: .top,
             thatSide: .top,
-            anchorType: .side,
+            anchorPoint: .side,
             equality: .less,
             priority: .init(999),
             constant: 99

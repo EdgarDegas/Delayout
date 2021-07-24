@@ -96,7 +96,7 @@ private extension UIView {
         let anchor = anchor(of: constraint.thisSide, type: .side)
         let thatAnchor = view.anchor(
             of: constraint.thatSide,
-            type: constraint.anchorType
+            type: constraint.anchorPoint
         )
         let nsConstraint: NSLayoutConstraint = {
             switch constraint.equality {
@@ -129,7 +129,7 @@ private extension UIView {
         let anchor = anchor(of: constraint.thisSide, type: .side)
         let thatAnchor = view.anchor(
             of: constraint.thatSide,
-            type: constraint.anchorType
+            type: constraint.anchorPoint
         )
         let nsConstraint: NSLayoutConstraint = {
             switch constraint.equality {

@@ -26,7 +26,7 @@ public enum SizeAnchor {
     case height
 }
 
-public enum AnchorType {
+public enum AnchorPoint {
     case side
     case safeArea
     case layoutMargins
@@ -46,7 +46,7 @@ extension UIView {
     
     func anchor(
         of anchor: HorizontalAnchor,
-        type: AnchorType
+        type: AnchorPoint
     ) -> NSLayoutXAxisAnchor {
         switch type {
         case .side:
@@ -75,7 +75,7 @@ extension UIView {
     
     func anchor(
         of anchor: VerticalAnchor,
-        type: AnchorType
+        type: AnchorPoint
     ) -> NSLayoutYAxisAnchor {
         switch type {
         case .side:
