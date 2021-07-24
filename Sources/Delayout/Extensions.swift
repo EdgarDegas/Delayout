@@ -1731,7 +1731,7 @@ public extension UIView {
     // MARK: height / width
     func heightToWidthRatio(
         _ ratio: CGFloat,
-        plus constant: CGFloat,
+        plus constant: CGFloat = 0,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
@@ -1750,7 +1750,7 @@ public extension UIView {
     
     func setHeightToWidthRatio(
         _ ratio: CGFloat,
-        plus constant: CGFloat,
+        plus constant: CGFloat = 0,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
@@ -1824,7 +1824,7 @@ public extension UIView {
     // MARK: width / height
     func widthToHeightRatio(
         _ ratio: CGFloat,
-        plus constant: CGFloat,
+        plus constant: CGFloat = 0,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
@@ -1843,7 +1843,7 @@ public extension UIView {
     
     func setWidthToHeightRatio(
         _ ratio: CGFloat,
-        plus constant: CGFloat,
+        plus constant: CGFloat = 0,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
@@ -1922,8 +1922,8 @@ public extension UIView {
     func height(
         to side: SizeAnchor,
         of view: UIView,
-        multipliedBy multiplier: CGFloat,
-        plus constant: CGFloat,
+        multipliedBy multiplier: CGFloat = 1,
+        plus constant: CGFloat = 0,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
@@ -1943,8 +1943,8 @@ public extension UIView {
     func setHeight(
         to side: SizeAnchor,
         of view: UIView,
-        multipliedBy multiplier: CGFloat,
-        plus constant: CGFloat,
+        multipliedBy multiplier: CGFloat = 1,
+        plus constant: CGFloat = 0,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
@@ -1960,7 +1960,7 @@ public extension UIView {
     func height(
         to side: SizeAnchor,
         of view: UIView,
-        multipliedBy multiplier: CGFloat,
+        multipliedBy multiplier: CGFloat = 1,
         plusGreaterThan constant: CGFloat,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
@@ -1981,7 +1981,7 @@ public extension UIView {
     func setHeight(
         to side: SizeAnchor,
         of view: UIView,
-        multipliedBy multiplier: CGFloat,
+        multipliedBy multiplier: CGFloat = 1,
         plusGreaterThan constant: CGFloat,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
@@ -1998,7 +1998,7 @@ public extension UIView {
     func height(
         to side: SizeAnchor,
         of view: UIView,
-        multipliedBy multiplier: CGFloat,
+        multipliedBy multiplier: CGFloat = 1,
         plusLessThan constant: CGFloat,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
@@ -2019,7 +2019,7 @@ public extension UIView {
     func setHeight(
         to side: SizeAnchor,
         of view: UIView,
-        multipliedBy multiplier: CGFloat,
+        multipliedBy multiplier: CGFloat = 1,
         plusLessThan constant: CGFloat,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
@@ -2109,8 +2109,8 @@ public extension UIView {
     func width(
         to side: SizeAnchor,
         of view: UIView,
-        multipliedBy multiplier: CGFloat,
-        plus constant: CGFloat,
+        multipliedBy multiplier: CGFloat = 1,
+        plus constant: CGFloat = 0,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) -> Self {
@@ -2130,8 +2130,8 @@ public extension UIView {
     func setWidth(
         to side: SizeAnchor,
         of view: UIView,
-        multipliedBy multiplier: CGFloat,
-        plus constant: CGFloat,
+        multipliedBy multiplier: CGFloat = 1,
+        plus constant: CGFloat = 0,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
@@ -2147,7 +2147,7 @@ public extension UIView {
     func width(
         to side: SizeAnchor,
         of view: UIView,
-        multipliedBy multiplier: CGFloat,
+        multipliedBy multiplier: CGFloat = 1,
         plusGreaterThan constant: CGFloat,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
@@ -2168,7 +2168,7 @@ public extension UIView {
     func setWidth(
         to side: SizeAnchor,
         of view: UIView,
-        multipliedBy multiplier: CGFloat,
+        multipliedBy multiplier: CGFloat = 1,
         plusGreaterThan constant: CGFloat,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
@@ -2185,7 +2185,7 @@ public extension UIView {
     func width(
         to side: SizeAnchor,
         of view: UIView,
-        multipliedBy multiplier: CGFloat,
+        multipliedBy multiplier: CGFloat = 1,
         plusLessThan constant: CGFloat,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
@@ -2206,7 +2206,7 @@ public extension UIView {
     func setWidth(
         to side: SizeAnchor,
         of view: UIView,
-        multipliedBy multiplier: CGFloat,
+        multipliedBy multiplier: CGFloat = 1,
         plusLessThan constant: CGFloat,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
