@@ -112,6 +112,7 @@ public extension UIView {
         _ = leadingInset(
             from: anchorPoint,
             by: constant,
+            priority: priority,
             id: id
         )
     }
@@ -158,6 +159,7 @@ public extension UIView {
         _ = leadingInset(
             from: anchorPoint,
             greaterThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -204,6 +206,7 @@ public extension UIView {
         _ = leadingInset(
             from: anchorPoint,
             lessThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -256,6 +259,7 @@ public extension UIView {
             of: view,
             at: anchorPoint,
             by: constant,
+            priority: priority,
             id: id
         )
     }
@@ -308,6 +312,7 @@ public extension UIView {
             of: view,
             at: anchorPoint,
             greaterThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -360,6 +365,7 @@ public extension UIView {
             of: view,
             at: anchorPoint,
             lessThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -413,6 +419,7 @@ public extension UIView {
             of: view,
             at: anchorPoint,
             by: constant,
+            priority: priority,
             id: id
         )
     }
@@ -465,6 +472,7 @@ public extension UIView {
             of: view,
             at: anchorPoint,
             greaterThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -517,6 +525,7 @@ public extension UIView {
             of: view,
             at: anchorPoint,
             lessThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -564,6 +573,7 @@ public extension UIView {
         _ = trailingInset(
             from: anchorPoint,
             by: constant,
+            priority: priority,
             id: id
         )
     }
@@ -610,6 +620,7 @@ public extension UIView {
         _ = trailingInset(
             from: anchorPoint,
             greaterThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -656,6 +667,7 @@ public extension UIView {
         _ = trailingInset(
             from: anchorPoint,
             lessThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -694,6 +706,7 @@ public extension UIView {
             of: view,
             at: anchorPoint,
             by: constant,
+            priority: priority,
             id: id
         )
     }
@@ -732,6 +745,7 @@ public extension UIView {
             of: view,
             at: anchorPoint,
             greaterThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -770,6 +784,7 @@ public extension UIView {
             of: view,
             at: anchorPoint,
             lessThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -809,6 +824,7 @@ public extension UIView {
             of: view,
             at: anchorPoint,
             by: constant,
+            priority: priority,
             id: id
         )
     }
@@ -847,6 +863,7 @@ public extension UIView {
             of: view,
             at: anchorPoint,
             greaterThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -885,6 +902,7 @@ public extension UIView {
             of: view,
             at: anchorPoint,
             lessThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -985,6 +1003,7 @@ public extension UIView {
             of: view,
             at: anchorPoint,
             by: constant,
+            priority: priority,
             id: id
         )
     }
@@ -1023,6 +1042,7 @@ public extension UIView {
             of: view,
             at: anchorPoint,
             greaterThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -1061,6 +1081,7 @@ public extension UIView {
             of: view,
             at: anchorPoint,
             lessThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -1127,6 +1148,7 @@ public extension UIView {
         _ = topInset(
             from: anchorPoint,
             by: constant,
+            priority: priority,
             id: id
         )
     }
@@ -1159,6 +1181,7 @@ public extension UIView {
         _ = topInset(
             from: anchorPoint,
             greaterThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -1191,6 +1214,7 @@ public extension UIView {
         _ = topInset(
             from: anchorPoint,
             lessThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -1229,6 +1253,7 @@ public extension UIView {
             of: view,
             at: anchorPoint,
             by: constant,
+            priority: priority,
             id: id
         )
     }
@@ -1267,6 +1292,7 @@ public extension UIView {
             of: view,
             at: anchorPoint,
             greaterThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -1305,6 +1331,7 @@ public extension UIView {
             of: view,
             at: anchorPoint,
             lessThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -1338,6 +1365,7 @@ public extension UIView {
         _ = bottomInset(
             from: anchorPoint,
             by: constant,
+            priority: priority,
             id: id
         )
     }
@@ -1370,6 +1398,7 @@ public extension UIView {
         _ = bottomInset(
             from: anchorPoint,
             greaterThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -1402,6 +1431,7 @@ public extension UIView {
         _ = bottomInset(
             from: anchorPoint,
             lessThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -1440,6 +1470,7 @@ public extension UIView {
             of: view,
             at: anchorPoint,
             by: constant,
+            priority: priority,
             id: id
         )
     }
@@ -1478,6 +1509,7 @@ public extension UIView {
             of: view,
             at: anchorPoint,
             greaterThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -1516,6 +1548,7 @@ public extension UIView {
             of: view,
             at: anchorPoint,
             lessThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -1615,6 +1648,7 @@ public extension UIView {
             of: view,
             at: anchorPoint,
             by: constant,
+            priority: priority,
             id: id
         )
     }
@@ -1653,6 +1687,7 @@ public extension UIView {
             of: view,
             at: anchorPoint,
             greaterThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -1691,6 +1726,7 @@ public extension UIView {
             of: view,
             at: anchorPoint,
             lessThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -1754,7 +1790,12 @@ public extension UIView {
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
-        _ = heightToWidthRatio(ratio, plus: constant, id: id)
+        _ = heightToWidthRatio(
+            ratio,
+            plus: constant,
+            priority: priority,
+            id: id
+        )
     }
     
     func heightToWidthRatio(
@@ -1785,6 +1826,7 @@ public extension UIView {
         _ = heightToWidthRatio(
             ratio,
             plusGreaterThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -1817,6 +1859,7 @@ public extension UIView {
         _ = heightToWidthRatio(
             ratio,
             plusLessThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -1850,6 +1893,7 @@ public extension UIView {
         _ = widthToHeightRatio(
             ratio,
             plus: constant,
+            priority: priority,
             id: id
         )
     }
@@ -1882,6 +1926,7 @@ public extension UIView {
         _ = widthToHeightRatio(
             ratio,
             plusGreaterThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -1914,6 +1959,7 @@ public extension UIView {
         _ = widthToHeightRatio(
             ratio,
             plusLessThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -1953,6 +1999,7 @@ public extension UIView {
             of: view,
             multipliedBy: multiplier,
             plus: constant,
+            priority: priority,
             id: id
         )
     }
@@ -1991,6 +2038,7 @@ public extension UIView {
             of: view,
             multipliedBy: multiplier,
             plusGreaterThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -2029,6 +2077,7 @@ public extension UIView {
             of: view,
             multipliedBy: multiplier,
             plusLessThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -2054,7 +2103,11 @@ public extension UIView {
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
-        _ = height(constant, id: id)
+        _ = height(
+            constant,
+            priority: priority,
+            id: id
+        )
     }
     
     func height(
@@ -2078,7 +2131,11 @@ public extension UIView {
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
-        _ = height(greaterThan: constant, id: id)
+        _ = height(
+            greaterThan: constant,
+            priority: priority,
+            id: id
+        )
     }
     
     func height(
@@ -2102,7 +2159,11 @@ public extension UIView {
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
-        _ = height(lessThan: constant, id: id)
+        _ = height(
+            lessThan: constant,
+            priority: priority,
+            id: id
+        )
     }
     
     // MARK: width
@@ -2140,6 +2201,7 @@ public extension UIView {
             of: view,
             multipliedBy: multiplier,
             plus: constant,
+            priority: priority,
             id: id
         )
     }
@@ -2178,6 +2240,7 @@ public extension UIView {
             of: view,
             multipliedBy: multiplier,
             plusGreaterThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -2216,6 +2279,7 @@ public extension UIView {
             of: view,
             multipliedBy: multiplier,
             plusLessThan: constant,
+            priority: priority,
             id: id
         )
     }
@@ -2241,7 +2305,11 @@ public extension UIView {
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
-        _ = width(constant, id: id)
+        _ = width(
+            constant,
+            priority: priority,
+            id: id
+        )
     }
     
     func width(
@@ -2265,7 +2333,11 @@ public extension UIView {
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
-        _ = width(greaterThan: constant, id: id)
+        _ = width(
+            greaterThan: constant,
+            priority: priority,
+            id: id
+        )
     }
     
     func width(
@@ -2289,7 +2361,11 @@ public extension UIView {
         priority: UILayoutPriority = defaultDelayoutConstraintPriority,
         id: String = UUID().uuidString
     ) {
-        _ = width(lessThan: constant, id: id)
+        _ = width(
+            lessThan: constant,
+            priority: priority,
+            id: id
+        )
     }
     
     // MARK: size
@@ -2299,8 +2375,16 @@ public extension UIView {
         widthID: String = UUID().uuidString,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority
     ) -> Self {
-        setHeight(constant, priority: priority, id: heightID)
-        setWidth(constant, priority: priority, id: widthID)
+        setHeight(
+            constant,
+            priority: priority,
+            id: heightID
+        )
+        setWidth(
+            constant,
+            priority: priority,
+            id: widthID
+        )
         return self
     }
     
@@ -2310,6 +2394,11 @@ public extension UIView {
         widthID: String = UUID().uuidString,
         priority: UILayoutPriority = defaultDelayoutConstraintPriority
     ) {
-        _ = size(constant, heightID: heightID, widthID: widthID, priority: priority)
+        _ = size(
+            constant,
+            heightID: heightID,
+            widthID: widthID,
+            priority: priority
+        )
     }
 }
