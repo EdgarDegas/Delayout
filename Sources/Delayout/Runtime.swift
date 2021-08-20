@@ -40,7 +40,7 @@ private extension UIView {
     @objc dynamic func swizzledDidMoveToSuperview() {
         swizzledDidMoveToSuperview()
         guard let superview = superview else {
-            removeAllDelayoutConstraints()
+            removeAllButSelfTargettingDelayoutConstraints()
             return
         }
         constraintsToSuperview.forEach { identifier, delayoutConstraint in

@@ -27,6 +27,36 @@ public extension UIView {
         targetedConstraints.removeValue(forKey: identifier)
     }
     
+    func removeAllButSelfTargettingDelayoutConstraints() {
+        let toRemove = constraintsAddedByDelayout
+            .filter {
+                if $0.value.secondItem == nil {
+                    // if there's only one item, it must be not `self`
+                    return $0.value.firstItem !== self
+                }
+                if $0.value.secondItem != nil {
+                    // if there're 2 items, neither of them should be not `self`
+                    return $0.value.firstItem !== self || $0.value.secondItem !== self
+                }
+                return true
+            }
+        toRemove.values.forEach {
+            $0.isActive = false
+        }
+        toRemove.keys.forEach {
+            constraintsAddedByDelayout.removeValue(forKey: $0)
+        }
+        constraintsToSuperview.removeAll()
+        targetedConstraints
+            .filter {
+                // not targetting self
+                $0.value.target !== self
+            }
+            .forEach {
+                targetedConstraints.removeValue(forKey: $0.key)
+            }
+    }
+    
     func removeAllDelayoutConstraints() {
         constraintsAddedByDelayout.forEach {
             $0.value.isActive = false
