@@ -2177,7 +2177,7 @@ public extension UIView {
     ) -> Self {
         let constraint = SizeConstraint(
             id: id,
-            thisSide: .height,
+            thisSide: .width,
             thatSide: side,
             multiplier: multiplier,
             equality: .equal,
@@ -2216,7 +2216,7 @@ public extension UIView {
     ) -> Self {
         let constraint = SizeConstraint(
             id: id,
-            thisSide: .height,
+            thisSide: .width,
             thatSide: side,
             multiplier: multiplier,
             equality: .greater,
@@ -2255,7 +2255,7 @@ public extension UIView {
     ) -> Self {
         let constraint = SizeConstraint(
             id: id,
-            thisSide: .height,
+            thisSide: .width,
             thatSide: side,
             multiplier: multiplier,
             equality: .less,
