@@ -37,7 +37,7 @@ internal extension UIView {
             applyTargetedConstraint(targetedConstraint)
             return
         }
-        guard view.superview != nil else {
+        guard view.superview != nil, self.superview != nil else {
             targetedConstraints[constraint.id] = targetedConstraint
             return
         }
