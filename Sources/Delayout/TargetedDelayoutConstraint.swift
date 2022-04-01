@@ -8,7 +8,7 @@
 import UIKit
 
 struct TargetedDelayoutConstraint {
-    unowned(unsafe) var target: UIView?
+    weak var target: UIView?
     var constraint: DelayoutConstraint
     
     var identifier: String {
