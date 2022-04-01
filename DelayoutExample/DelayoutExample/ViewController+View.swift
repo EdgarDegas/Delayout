@@ -22,8 +22,8 @@ extension ViewController {
         cardView {
           HStack {
             UIImageView(image: UIImage(named: "Avatar"))
-              .cornerRadius(avatarDimension / 2)
-              .dimension(avatarDimension)
+              .cornerRadius(avatarDiameter / 2)
+              .size(avatarDiameter)
               .clipsToBounds(true)
               .contentMode(.scaleAspectFill)
             
@@ -138,7 +138,7 @@ private extension ViewController.View {
 
 
 private extension ViewController.View {
-  var avatarDimension: CGFloat {
+  var avatarDiameter: CGFloat {
     64
   }
   
