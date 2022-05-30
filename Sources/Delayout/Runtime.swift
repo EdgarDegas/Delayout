@@ -9,6 +9,10 @@ import UIKit
 
 var swizzled = false
 
+/// Apply constraints in `constraintsTBAToSuperview` and `targetedConstraintsTBA`.
+///
+/// - When being added to a superview, apply constraints in `constraintsTBAToSuperview`.
+/// - When adding some view as `subview`, apply the view's `targetedConstraintsTBA`.
 public func swizzle() {
     guard !swizzled else { return }
     swizzled = true
@@ -23,27 +27,24 @@ public func swizzle() {
         )!
         method_exchangeImplementations(m1, m2)
     }
-    do {
-        let m1 = class_getInstanceMethod(
-            UIView.self,
-            #selector(UIView.addSubview(_:))
-        )!
-        let m2 = class_getInstanceMethod(
-            UIView.self,
-            #selector(UIView.swizzledAddSubview)
-        )!
-        method_exchangeImplementations(m1, m2)
-    }
 }
 
 private extension UIView {
+    /// If the view is being added as another view's subview, apply `constraintsTBAToSuperview`.
+    /// If the view is being removed from `superview`, remove all constraints that involves two views.
     @objc dynamic func swizzledDidMoveToSuperview() {
         swizzledDidMoveToSuperview()
+        handleConstraintsTBAToSuperview()
+        handleTargetedConstraintsTBA()
+        handleViewsHavingConstraintsTBATargetingThisViewByID()
+    }
+    
+    func handleConstraintsTBAToSuperview() {
         guard let superview = superview else {
             removeAllButSelfTargettingDelayoutConstraints()
             return
         }
-        constraintsToSuperview.forEach { identifier, delayoutConstraint in
+        constraintsTBAToSuperview.forEach { identifier, delayoutConstraint in
             // try remove constraint with the same identifier
             removeDelayoutConstraint(by: identifier)
             let targetedConstraint = TargetedDelayoutConstraint(
@@ -52,57 +53,63 @@ private extension UIView {
             )
             applyTargetedConstraint(targetedConstraint)
         }
-        constraintsToSuperview.removeAll()
+        constraintsTBAToSuperview.removeAll()
     }
     
-    @objc dynamic func swizzledAddSubview(_ subview: UIView) {
-        swizzledAddSubview(subview)
-        handleTargetedConstraints(of: subview)
-        handleTargetedSubview(subview)
-    }
-    
-    func handleTargetedConstraints(of subview: UIView) {
-        subview.targetedConstraints.forEach { identifier, targetedConstraint in
-            defer {
-                subview.targetedConstraints.removeValue(forKey: identifier)
-            }
+    func handleTargetedConstraintsTBA() {
+        targetedConstraintsTBAByID.forEach {
+            id, targetedConstraint
+        in
             guard let target = targetedConstraint.target else {
+                // if the target has been deallocated
+                targetedConstraintsTBAByID.removeValue(forKey: id)
                 return
+            }
+            
+            let apply = { [self, target] in  // keep this non-escaping
+                applyTargetedConstraint(targetedConstraint)
+                targetedConstraintsTBAByID.removeValue(forKey: id)
+                target.viewsHavingConstraintsTBATargetingThisViewByID.removeValue(
+                    forKey: id
+                )
             }
             
             if target === self {
-                subview.applyTargetedConstraint(targetedConstraint)
+                // if targeting self, doesn't matter if the view is in hierarchy
+                apply()
                 return
             }
             
-            guard target.superview != nil else {
-                let targetID = ObjectIdentifier(target)
-                if var subviewConstraints = subviewConstraintsByTarget[targetID] {
-                    subviewConstraints.append(
-                        (subview, targetedConstraint.constraint)
-                    )
-                    subviewConstraintsByTarget[targetID] = subviewConstraints
-                } else {
-                    subviewConstraintsByTarget[targetID] = [
-                        (subview, targetedConstraint.constraint)
-                    ]
-                }
+            guard superview != nil, target.superview != nil else {
+                // if either view is not in a view hierarchy, do nothing
                 return
             }
             
-            subview.applyTargetedConstraint(targetedConstraint)
+            apply()
         }
     }
     
-    func handleTargetedSubview(_ subview: UIView) {
-        let subviewID = ObjectIdentifier(subview)
-        subviewConstraintsByTarget[subviewID]?.forEach { source, constraint in
-            let targetedConstraint = TargetedDelayoutConstraint(
-                target: subview,
-                constraint: constraint
-            )
-            source.applyTargetedConstraint(targetedConstraint)
-            subviewConstraintsByTarget.removeValue(forKey: subviewID)
+    func handleViewsHavingConstraintsTBATargetingThisViewByID() {
+        viewsHavingConstraintsTBATargetingThisViewByID.forEach {
+            id, sourceViewWrapper
+        in
+            defer {
+                viewsHavingConstraintsTBATargetingThisViewByID.removeValue(forKey: id)
+            }
+            guard
+                let sourceView = sourceViewWrapper.view,
+                sourceView.superview != nil
+            else {
+                // guard that source view is alive and is in a view hierarchy
+                return
+            }
+            defer {
+                sourceView.targetedConstraintsTBAByID.removeValue(forKey: id)
+            }
+            guard let constraint = sourceView.targetedConstraintsTBAByID[id] else {
+                return
+            }
+            sourceView.applyTargetedConstraint(constraint)
         }
     }
 }

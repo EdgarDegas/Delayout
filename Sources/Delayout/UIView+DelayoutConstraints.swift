@@ -10,10 +10,10 @@ import UIKit
 private var keyConstraintsToSuperview: Void?
 private var keyTargetedConstraints: Void?
 private var keyNSConstraints: Void?
-private var keySubviewConstraintsByTarget: Void?
+private var keyToViewsHavingConstraintsTBATargetingThisViewByID: Void?
 
-typealias ConstraintsToSuperview = [String: DelayoutConstraint]
-typealias TargetedConstraints = [String: TargetedDelayoutConstraint]
+typealias ConstraintsToSuperviewByID = [String: DelayoutConstraint]
+typealias TargetedConstraintsByID = [String: TargetedDelayoutConstraint]
 public typealias NSConstraints = [String: NSLayoutConstraint]
 typealias SubviewConstraint = (source: UIView, constraint: DelayoutConstraint)
 
@@ -23,8 +23,8 @@ public extension UIView {
             nsConstraint.isActive = false
             constraintsAddedByDelayout.removeValue(forKey: identifier)
         }
-        constraintsToSuperview.removeValue(forKey: identifier)
-        targetedConstraints.removeValue(forKey: identifier)
+        constraintsTBAToSuperview.removeValue(forKey: identifier)
+        targetedConstraintsTBAByID.removeValue(forKey: identifier)
     }
     
     func removeAllButSelfTargettingDelayoutConstraints() {
@@ -46,14 +46,14 @@ public extension UIView {
         toRemove.keys.forEach {
             constraintsAddedByDelayout.removeValue(forKey: $0)
         }
-        constraintsToSuperview.removeAll()
-        targetedConstraints
+        constraintsTBAToSuperview.removeAll()
+        targetedConstraintsTBAByID
             .filter {
                 // not targetting self
                 $0.value.target !== self
             }
             .forEach {
-                targetedConstraints.removeValue(forKey: $0.key)
+                targetedConstraintsTBAByID.removeValue(forKey: $0.key)
             }
     }
     
@@ -62,8 +62,8 @@ public extension UIView {
             $0.value.isActive = false
         }
         constraintsAddedByDelayout.removeAll()
-        constraintsToSuperview.removeAll()
-        targetedConstraints.removeAll()
+        constraintsTBAToSuperview.removeAll()
+        targetedConstraintsTBAByID.removeAll()
     }
     
     var constraintsAddedByDelayout: NSConstraints {
@@ -83,9 +83,9 @@ public extension UIView {
 }
 
 internal extension UIView {
-    var constraintsToSuperview: ConstraintsToSuperview {
+    var constraintsTBAToSuperview: ConstraintsToSuperviewByID {
         get {
-            if let constraints: ConstraintsToSuperview = getRuntimeObject(
+            if let constraints: ConstraintsToSuperviewByID = getRuntimeObject(
                 by: &keyConstraintsToSuperview
             ) {
                 return constraints
@@ -98,9 +98,9 @@ internal extension UIView {
         }
     }
     
-    var targetedConstraints: TargetedConstraints {
+    var targetedConstraintsTBAByID: TargetedConstraintsByID {
         get {
-            if let constraints: TargetedConstraints = getRuntimeObject(
+            if let constraints: TargetedConstraintsByID = getRuntimeObject(
                 by: &keyTargetedConstraints
             ) {
                 return constraints
@@ -113,10 +113,10 @@ internal extension UIView {
         }
     }
     
-    var subviewConstraintsByTarget: [ObjectIdentifier: [SubviewConstraint]] {
+    var viewsHavingConstraintsTBATargetingThisViewByID: [String: WeakView] {
         get {
-            if let r: [ObjectIdentifier: [SubviewConstraint]] = getRuntimeObject(
-                by: &keySubviewConstraintsByTarget
+            if let r: [String: WeakView] = getRuntimeObject(
+                by: &keyToViewsHavingConstraintsTBATargetingThisViewByID
             ) {
                 return r
             } else {
@@ -124,7 +124,7 @@ internal extension UIView {
             }
         }
         set {
-            setRuntimeObject(newValue, by: &keySubviewConstraintsByTarget)
+            setRuntimeObject(newValue, by: &keyToViewsHavingConstraintsTBATargetingThisViewByID)
         }
     }
 }
