@@ -10,10 +10,10 @@ import UIKit
 private var keyConstraintsToSuperview: Void?
 private var keyTargetedConstraints: Void?
 private var keyNSConstraints: Void?
-private var keySubviewConstraintsByTarget: Void?
+private var keyToViewsHavingConstraintsTBATargetingThisViewByID: Void?
 
-typealias ConstraintsToSuperview = [String: DelayoutConstraint]
-typealias TargetedConstraints = [String: TargetedDelayoutConstraint]
+typealias ConstraintsToSuperviewByID = [String: DelayoutConstraint]
+typealias TargetedConstraintsByID = [String: TargetedDelayoutConstraint]
 public typealias NSConstraints = [String: NSLayoutConstraint]
 typealias SubviewConstraint = (source: UIView, constraint: DelayoutConstraint)
 
@@ -23,22 +23,70 @@ public extension UIView {
             nsConstraint.isActive = false
             constraintsAddedByDelayout.removeValue(forKey: identifier)
         }
-        constraintsToSuperview.removeValue(forKey: identifier)
-        targetedConstraints.removeValue(forKey: identifier)
+        constraintsTBAToSuperview.removeValue(forKey: identifier)
+        targetedConstraintsTBAByID.removeValue(forKey: identifier)
+    }
+    
+    func doesNSAnchor<T>(
+        _ anchor: NSLayoutAnchor<T>,
+        of attribute: NSLayoutConstraint.Attribute,
+        belongTo view: UIView
+    ) -> Bool {
+        switch attribute {
+        case .leading:
+            return anchor == view.leadingAnchor
+        case .left:
+            return anchor == view.leftAnchor
+        case .trailing:
+            return anchor == view.trailingAnchor
+        case .right:
+            return anchor == view.rightAnchor
+        case .top:
+            return anchor == view.topAnchor
+        case .bottom:
+            return anchor == view.bottomAnchor
+        case .firstBaseline:
+            return anchor == view.firstBaselineAnchor
+        case .lastBaseline:
+            return anchor == view.lastBaselineAnchor
+        case .centerX:
+            return anchor == view.centerXAnchor
+        case .centerY:
+            return anchor == view.centerYAnchor
+        case .width:
+            return anchor == view.widthAnchor
+        case .height:
+            return anchor == view.heightAnchor
+        case .leadingMargin,
+            .leftMargin,
+            .topMargin,
+            .bottomMargin,
+            .trailingMargin,
+            .rightMargin,
+            .centerXWithinMargins,
+            .centerYWithinMargins,
+            .notAnAttribute
+        :
+            // we didn't use these attributes
+            return false
+        @unknown default:
+            return false
+        }
     }
     
     func removeAllButSelfTargettingDelayoutConstraints() {
         let toRemove = constraintsAddedByDelayout
-            .filter {
-                if $0.value.secondItem == nil {
-                    // if there's only one item, it must be not `self`
-                    return $0.value.firstItem !== self
+            .filter {  // remove constraints related to some other view
+                if let secondAnchor = $0.value.secondAnchor {
+                    let secondItemIsSelf = doesNSAnchor(
+                        secondAnchor,
+                        of: $0.value.secondAttribute,
+                        belongTo: self
+                    )
+                    // don't remove if the second item is `self`
+                    return !secondItemIsSelf
                 }
-                if $0.value.secondItem != nil {
-                    // if there're 2 items, neither of them should be not `self`
-                    return $0.value.firstItem !== self || $0.value.secondItem !== self
-                }
-                return true
+                return false
             }
         toRemove.values.forEach {
             $0.isActive = false
@@ -46,14 +94,14 @@ public extension UIView {
         toRemove.keys.forEach {
             constraintsAddedByDelayout.removeValue(forKey: $0)
         }
-        constraintsToSuperview.removeAll()
-        targetedConstraints
+        constraintsTBAToSuperview.removeAll()
+        targetedConstraintsTBAByID
             .filter {
                 // not targetting self
                 $0.value.target !== self
             }
             .forEach {
-                targetedConstraints.removeValue(forKey: $0.key)
+                targetedConstraintsTBAByID.removeValue(forKey: $0.key)
             }
     }
     
@@ -62,8 +110,8 @@ public extension UIView {
             $0.value.isActive = false
         }
         constraintsAddedByDelayout.removeAll()
-        constraintsToSuperview.removeAll()
-        targetedConstraints.removeAll()
+        constraintsTBAToSuperview.removeAll()
+        targetedConstraintsTBAByID.removeAll()
     }
     
     var constraintsAddedByDelayout: NSConstraints {
@@ -83,9 +131,9 @@ public extension UIView {
 }
 
 internal extension UIView {
-    var constraintsToSuperview: ConstraintsToSuperview {
+    var constraintsTBAToSuperview: ConstraintsToSuperviewByID {
         get {
-            if let constraints: ConstraintsToSuperview = getRuntimeObject(
+            if let constraints: ConstraintsToSuperviewByID = getRuntimeObject(
                 by: &keyConstraintsToSuperview
             ) {
                 return constraints
@@ -98,9 +146,9 @@ internal extension UIView {
         }
     }
     
-    var targetedConstraints: TargetedConstraints {
+    var targetedConstraintsTBAByID: TargetedConstraintsByID {
         get {
-            if let constraints: TargetedConstraints = getRuntimeObject(
+            if let constraints: TargetedConstraintsByID = getRuntimeObject(
                 by: &keyTargetedConstraints
             ) {
                 return constraints
@@ -113,10 +161,10 @@ internal extension UIView {
         }
     }
     
-    var subviewConstraintsByTarget: [ObjectIdentifier: [SubviewConstraint]] {
+    var viewsHavingConstraintsTBATargetingThisViewByID: [String: WeakView] {
         get {
-            if let r: [ObjectIdentifier: [SubviewConstraint]] = getRuntimeObject(
-                by: &keySubviewConstraintsByTarget
+            if let r: [String: WeakView] = getRuntimeObject(
+                by: &keyToViewsHavingConstraintsTBATargetingThisViewByID
             ) {
                 return r
             } else {
@@ -124,7 +172,7 @@ internal extension UIView {
             }
         }
         set {
-            setRuntimeObject(newValue, by: &keySubviewConstraintsByTarget)
+            setRuntimeObject(newValue, by: &keyToViewsHavingConstraintsTBATargetingThisViewByID)
         }
     }
 }

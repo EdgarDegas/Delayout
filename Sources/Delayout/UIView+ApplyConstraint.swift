@@ -13,8 +13,8 @@ internal extension UIView {
     ) {
         swizzle()
         guard let superview = superview else {
-            // add delayout constraint but not apply
-            constraintsToSuperview[constraint.id] = constraint
+            // store the constraint for future application
+            constraintsTBAToSuperview[constraint.id] = constraint
             return
         }
         applyTargetedConstraint(
@@ -27,18 +27,24 @@ internal extension UIView {
     
     func tryApplyingConstraint(
         _ constraint: DelayoutConstraint,
-        to view: UIView
+        to target: UIView
     ) {
         swizzle()
         let targetedConstraint = TargetedDelayoutConstraint(
-            target: view, constraint: constraint
+            target: target, constraint: constraint
         )
-        guard view != superview else {
+        guard target != self, target != superview else {
+            // if `target` is the `superview` or the view itself,
+            // then it doesn't need to be in any view hierarchy.
             applyTargetedConstraint(targetedConstraint)
             return
         }
-        guard view.superview != nil, self.superview != nil else {
-            targetedConstraints[constraint.id] = targetedConstraint
+        guard target.superview != nil, self.superview != nil else {
+            // if either `target` or `self` is not added to a view hierarchy,
+            // cache the constraint for future application.
+            targetedConstraintsTBAByID[constraint.id] = targetedConstraint
+            target.viewsHavingConstraintsTBATargetingThisViewByID[constraint.id] =
+                WeakView(view: self)
             return
         }
         applyTargetedConstraint(targetedConstraint)
@@ -57,7 +63,7 @@ internal extension UIView {
             } else if let constraint = constraint as? SizeConstraint {
                 return applySizeConstraint(constraint, to: target)
             } else {
-                return nil  // suppose to be impossible
+                return nil  // should be impossible
             }
         }()
     }
