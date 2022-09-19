@@ -27,18 +27,66 @@ public extension UIView {
         targetedConstraintsTBAByID.removeValue(forKey: identifier)
     }
     
+    func doesNSAnchor<T>(
+        _ anchor: NSLayoutAnchor<T>,
+        of attribute: NSLayoutConstraint.Attribute,
+        belongTo view: UIView
+    ) -> Bool {
+        switch attribute {
+        case .leading:
+            return anchor == view.leadingAnchor
+        case .left:
+            return anchor == view.leftAnchor
+        case .trailing:
+            return anchor == view.trailingAnchor
+        case .right:
+            return anchor == view.rightAnchor
+        case .top:
+            return anchor == view.topAnchor
+        case .bottom:
+            return anchor == view.bottomAnchor
+        case .firstBaseline:
+            return anchor == view.firstBaselineAnchor
+        case .lastBaseline:
+            return anchor == view.lastBaselineAnchor
+        case .centerX:
+            return anchor == view.centerXAnchor
+        case .centerY:
+            return anchor == view.centerYAnchor
+        case .width:
+            return anchor == view.widthAnchor
+        case .height:
+            return anchor == view.heightAnchor
+        case .leadingMargin,
+            .leftMargin,
+            .topMargin,
+            .bottomMargin,
+            .trailingMargin,
+            .rightMargin,
+            .centerXWithinMargins,
+            .centerYWithinMargins,
+            .notAnAttribute
+        :
+            // we didn't use these attributes
+            return false
+        @unknown default:
+            return false
+        }
+    }
+    
     func removeAllButSelfTargettingDelayoutConstraints() {
         let toRemove = constraintsAddedByDelayout
-            .filter {
-                if $0.value.secondItem == nil {
-                    // if there's only one item, it must be not `self`
-                    return $0.value.firstItem !== self
+            .filter {  // remove constraints related to some other view
+                if let secondAnchor = $0.value.secondAnchor {
+                    let secondItemIsSelf = doesNSAnchor(
+                        secondAnchor,
+                        of: $0.value.secondAttribute,
+                        belongTo: self
+                    )
+                    // don't remove if the second item is `self`
+                    return !secondItemIsSelf
                 }
-                if $0.value.secondItem != nil {
-                    // if there're 2 items, neither of them should be not `self`
-                    return $0.value.firstItem !== self || $0.value.secondItem !== self
-                }
-                return true
+                return false
             }
         toRemove.values.forEach {
             $0.isActive = false
