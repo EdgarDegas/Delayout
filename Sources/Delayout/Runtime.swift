@@ -34,6 +34,10 @@ private extension UIView {
     /// If the view is being removed from `superview`, remove all constraints that involves two views.
     @objc dynamic func swizzledDidMoveToSuperview() {
         swizzledDidMoveToSuperview()
+        guard superview != nil else {
+            removeAllButSelfTargettingDelayoutConstraints()
+            return
+        }
         handleConstraintsTBAToSuperview()
         handleTargetedConstraintsTBA()
         handleViewsHavingConstraintsTBATargetingThisViewByID()
@@ -41,7 +45,6 @@ private extension UIView {
     
     func handleConstraintsTBAToSuperview() {
         guard let superview = superview else {
-            removeAllButSelfTargettingDelayoutConstraints()
             return
         }
         constraintsTBAToSuperview.forEach { identifier, delayoutConstraint in
@@ -74,7 +77,7 @@ private extension UIView {
                 )
             }
             
-            if target === self {
+            if target === self || target === superview {
                 // if targeting self, doesn't matter if the view is in hierarchy
                 apply()
                 return
@@ -98,17 +101,13 @@ private extension UIView {
             }
             guard
                 let sourceView = sourceViewWrapper.view,
+                let constraint = sourceView.targetedConstraintsTBAByID[id],
                 sourceView.superview != nil
             else {
-                // guard that source view is alive and is in a view hierarchy
+                // guard that source view is alive, and is added to a superview
                 return
             }
-            defer {
-                sourceView.targetedConstraintsTBAByID.removeValue(forKey: id)
-            }
-            guard let constraint = sourceView.targetedConstraintsTBAByID[id] else {
-                return
-            }
+            sourceView.targetedConstraintsTBAByID.removeValue(forKey: id)
             sourceView.applyTargetedConstraint(constraint)
         }
     }
